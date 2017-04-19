@@ -1,0 +1,9 @@
+[submodule "lib/BearSSL"]
+	path = lib/BearSSL
+	url = https://www.bearssl.org/git/BearSSL
+[submodule ".cargo"]
+	path = .cargo
+	url = https://github.com/lemonrock/.cargo.git
+[submodule "tools/bindgen-wrapper"]
+	path = tools/bindgen-wrapper
+	url = https://github.com/lemonrock/bindgen-wrapper.git

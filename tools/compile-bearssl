@@ -1,0 +1,263 @@
+#!/usr/bin/env sh
+# This file is part of bearssl-sys. It is subject to the license terms in the COPYRIGHT file found in the top-level directory of this distribution and at https://raw.githubusercontent.com/lemonrock/bearssl-sys/master/COPYRIGHT. No part of bearssl-sys, including this file, may be copied, modified, propagated, or distributed except according to the terms contained in the COPYRIGHT file.
+# Copyright © 2016 The developers of bearssl-sys. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/lemonrock/bearssl-sys/master/COPYRIGHT.
+
+
+set -e
+set -u
+set -f
+
+
+_program_path_find()
+{
+    if [ "${_program_fattening_program_path+set}" = 'set' ]; then
+        printf '%s\n' "$_program_fattening_program_path"
+
+    elif [ "${0%/*}" = "$0" ]; then
+
+        # We've been invoked by the interpreter as, say, bash program
+        if [ -r "$0" ]; then
+            pwd -P
+        # Clutching at straws; probably run via a download, anonymous script, etc, weird execve, etc
+        else
+            printf '\n'
+        fi
+
+    else
+
+        # We've been invoked with a relative or absolute path (also when invoked via PATH in a shell)
+
+        _program_path_find_parentPath()
+        {
+            parentPath="${scriptPath%/*}"
+            if [ -z "$parentPath" ]; then
+                parentPath='/'
+            fi
+            cd "$parentPath" 1>/dev/null
+        }
+
+        # pdksh / mksh have problems with unsetting a variable that was never set...
+        if [ "${CDPATH+set}" = 'set' ]; then
+            unset CDPATH
+        fi
+
+        if command -v realpath 1>/dev/null 2>/dev/null; then
+            (
+                scriptPath="$(realpath "$0")"
+
+                _program_path_find_parentPath
+                pwd -P
+            )
+        elif command -v readlink 1>/dev/null 2>/dev/null; then
+            (
+                scriptPath="$0"
+
+                while [ -L "$scriptPath" ]
+                do
+                    _program_path_find_parentPath
+                    scriptPath="$(readlink "$scriptPath")"
+                done
+
+                _program_path_find_parentPath
+                pwd -P
+            )
+        else
+            # This approach will fail in corner cases where the script itself is a symlink in a path not parallel with the concrete script
+            (
+                scriptPath="$0"
+
+                _program_path_find_parentPath
+                pwd -P
+            )
+        fi
+
+    fi
+}
+
+compile_bearssl_fail()
+{
+	local message="$1"
+
+	printf 'compile-bearssl:FAIL:%s\n' "$message" 1>&2
+	exit 1
+}
+
+compile_bearssl_ensureRequiredBinariesArePresent()
+{
+	local reason="$1"
+	shift 1
+
+	local binary
+	local missing=false
+	for binary in "$@"
+	do
+		if ! command -v "$binary" 1>/dev/null 2>/dev/null; then
+			printf 'compile-bearssl:%s\n' "The binary '$binary' needs to be in the path" 1>&2
+			missing=true
+		fi
+	done
+
+	if $missing; then
+		compile_bearssl_fail "Please make sure that the missing binaries are installed because '$reason'"
+	fi
+}
+
+_compile_bearssl_prepareForMacOSX_brewInstall()
+{
+	compile_bearssl_ensureRequiredBinariesArePresent brew
+
+	local packageName="$1"
+	if ! brew ls --versions "$packageName" 1>/dev/null 2>/dev/null; then
+		brew install "$packageName" 1>&2
+	fi
+}
+
+compile_bearssl_prepareForMacOSX()
+{
+	_compile_bearssl_prepareForMacOSX_brewInstall gnu-sed
+	_compile_bearssl_prepareForMacOSX_brewInstall make
+	_compile_bearssl_prepareForMacOSX_brewInstall libelf
+	_compile_bearssl_prepareForMacOSX_brewInstall coreutils
+	_compile_bearssl_prepareForMacOSX_brewInstall FiloSottile/musl-cross/musl-cross
+}
+
+compile_bearssl_parseCommandLine()
+{
+	case "$#" in
+
+		0)
+			:
+		;;
+
+		1)
+			case "$1" in
+
+				-h|--help)
+					printf './compile-bearssl\n'
+					printf './compile-bearssl -h|--help\n'
+					printf 'Pass the environment variable NUM_JOBS to control the number of make jobs\n'
+					exit 0
+				;;
+
+				*)
+					compile_bearssl_fail "Does not take any arguments"
+				;;
+
+			esac
+		;;
+
+		*)
+			compile_bearssl_fail "Does not take any arguments"
+		;;
+
+	esac
+}
+
+compile_bearssl_findFolderPaths()
+{
+	programFolderPath="$(_program_path_find)"
+
+	cd "$programFolderPath"/.. 1>/dev/null 2>/dev/null
+		homeFolderPath="$(pwd)"
+	cd - 1>/dev/null 2>/dev/null
+
+	configurationFolderPath="$homeFolderPath"/compile-bearssl.conf.d
+}
+
+compile_bearssl_platformSpecificPreparation()
+{
+	compile_bearssl_ensureRequiredBinariesArePresent uname
+	platform="$(uname)"
+
+	if [ -z "${NUM_JOBS+undefined}" ]; then
+		numberOfMakeJobs=0
+	else
+		numberOfMakeJobs="$NUM_JOBS"
+	fi
+
+	case "$platform" in
+
+		Darwin)
+			compile_bearssl_prepareForMacOSX
+
+			compile_bearssl_ensureRequiredBinariesArePresent brew
+
+			export PATH="$(brew --prefix coreutils)"/libexec/gnubin:"$(brew --prefix gnu-sed)"/libexec/gnubin:"$PATH"
+
+			muslIncludeFolderPath="$(brew --prefix musl-cross)"/libexec/x86_64-linux-musl/include
+
+			if [ $numberOfMakeJobs -eq 0 ]; then
+				compile_bearssl_ensureRequiredBinariesArePresent sysctl
+				numberOfMakeJobs="$(sysctl -n hw.ncpu)"
+			fi
+
+		;;
+
+		Linux)
+			compile_bearssl_ensureRequiredBinariesArePresent make sed x86_64-linux-musl-gcc x86_64-linux-musl-ar rm mkdir rsync cat
+			muslIncludeFolderPath='/usr/include'
+
+			if [ $numberOfMakeJobs -eq 0 ]; then
+				compile_bearssl_ensureRequiredBinariesArePresent grep
+				numberOfMakeJobs="$(grep -c '^processor' /proc/cpuinfo)"
+			fi
+		;;
+
+		*)
+			compile_bearssl_fail "Only Darwin (Mac OS X) and Linux (specifically, Alpine Linux) are supported at this time"
+		;;
+
+	esac
+}
+
+compile_bearssl_createTemporaryFolder()
+{
+	temporaryFolderPath="$configurationFolderPath"/temporary
+	rm -rf "$temporaryFolderPath"
+	mkdir -m 0700 -p "$temporaryFolderPath"
+}
+
+compile_bearssl_makeCopyToAlter()
+{
+	rsync --archive --quiet --exclude=.git "$homeFolderPath"/lib/BearSSL/ "$temporaryFolderPath"/
+}
+
+compile_bearssl_installConfiguration()
+{
+	cp "$configurationFolderPath"/CrossCompileOnMacOsXConfiguration.mk "$temporaryFolderPath"/conf
+}
+
+compile_bearssl_make()
+{
+	cd "$temporaryFolderPath" 1>/dev/null 2>/dev/null
+		make CONF=CrossCompileOnMacOsXConfiguration 1>&2
+	cd - 1>/dev/null 2>/dev/null
+}
+
+compile_bearssl_main()
+{
+	compile_bearssl_parseCommandLine "$@"
+
+	local programFolderPath
+	local homeFolderPath
+	local configurationFolderPath
+	compile_bearssl_findFolderPaths
+
+	local platform
+	local muslIncludeFolderPath
+	local numberOfMakeJobs
+	compile_bearssl_platformSpecificPreparation
+
+	local temporaryFolderPath
+	compile_bearssl_createTemporaryFolder
+	
+	compile_bearssl_makeCopyToAlter
+	
+	compile_bearssl_installConfiguration
+	
+	compile_bearssl_make
+	
+	printf '\n\n\nFINISHED\n\n\n' 1>&2
+}
+
+compile_bearssl_main "$@"
