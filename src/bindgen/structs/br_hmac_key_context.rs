@@ -4,6 +4,7 @@
 
 #[repr(C)]
 #[derive(Copy)]
+#[allow(missing_debug_implementations)]
 pub struct br_hmac_key_context
 {
 	pub dig_vtable: *const br_hash_class,

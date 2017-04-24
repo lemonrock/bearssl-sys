@@ -4,6 +4,7 @@
 
 #[repr(C)]
 #[derive(Copy)]
+#[allow(missing_debug_implementations)]
 pub struct br_des_tab_cbcdec_keys
 {
 	pub vtable: *const br_block_cbcdec_class,

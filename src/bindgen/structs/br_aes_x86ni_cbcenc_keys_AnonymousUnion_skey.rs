@@ -4,6 +4,7 @@
 
 #[repr(C)]
 #[derive(Copy)]
+#[allow(missing_debug_implementations)]
 pub struct br_aes_x86ni_cbcenc_keys_AnonymousUnion_skey
 {
 	pub _bindgen_data_: [u8; 240usize],

@@ -4,6 +4,7 @@
 
 #[repr(C)]
 #[derive(Copy)]
+#[allow(missing_debug_implementations)]
 pub struct br_skey_decoder_context
 {
 	pub key: br_skey_decoder_context_AnonymousUnion_key,

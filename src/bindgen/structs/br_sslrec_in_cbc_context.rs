@@ -3,7 +3,8 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[allow(missing_debug_implementations)]
+#[allow(missing_copy_implementations)]
 pub struct br_sslrec_in_cbc_context
 {
 	pub vtable: *const br_sslrec_in_cbc_class,

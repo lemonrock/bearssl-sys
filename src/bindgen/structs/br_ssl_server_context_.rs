@@ -3,7 +3,7 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
+#[allow(missing_debug_implementations)]
 pub struct br_ssl_server_context_
 {
 	pub eng: br_ssl_engine_context,
@@ -29,14 +29,6 @@ pub struct br_ssl_server_context_
 	pub hash_CV_id: c_int,
 }
 
-impl Clone for br_ssl_server_context_
-{
-	#[inline(always)]
-	fn clone(&self) -> Self
-	{
-		*self
-	}
-}
 
 impl Default for br_ssl_server_context_
 {

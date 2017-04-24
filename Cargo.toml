@@ -16,7 +16,7 @@ include = ["README.md", "LICENSE", "COPYRIGHT", "src/**/*.rs", "benches/**/*.rs"
 # Relative to Cargo.toml
 readme = "README.md"
 publish = true
-version = "0.0.1"
+version = "0.0.2"
 
 [profile.release]
 opt-level = 3
@@ -25,3 +25,9 @@ rpath = false
 lto = true
 debug-assertions = false
 codegen-units = 1
+
+[dependencies]
+libc = "0.2"
+
+[build-dependencies]
+c = { git = "https://github.com/lemonrock/rust-c.git", features = ["build"] }

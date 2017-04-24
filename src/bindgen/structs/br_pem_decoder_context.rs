@@ -4,6 +4,7 @@
 
 #[repr(C)]
 #[derive(Copy)]
+#[allow(missing_debug_implementations)]
 pub struct br_pem_decoder_context
 {
 	pub cpu: br_pem_decoder_context_AnonymousStruct_cpu,

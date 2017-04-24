@@ -8,7 +8,19 @@ use ::core::default::Default;
 use ::core::mem::zeroed;
 use ::core::option::Option;
 
-#[link(name = "bearssl", kind = "static")]
+extern crate libc;
+use ::libc::c_char;
+use ::libc::c_int;
+use ::libc::c_uchar;
+use ::libc::c_uint;
+use ::libc::c_void;
+use ::libc::int16_t;
+use ::libc::size_t;
+use ::libc::uint16_t;
+use ::libc::uint32_t;
+use ::libc::uint64_t;
+
+#[link(name = "bearssl", kind = "static-nobundle")]
 extern "C"
 {
 }

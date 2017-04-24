@@ -4,6 +4,7 @@
 
 #[repr(C)]
 #[derive(Copy)]
+#[allow(missing_debug_implementations)]
 pub struct br_ssl_session_parameters
 {
 	pub session_id: [c_uchar; 32usize],

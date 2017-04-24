@@ -4,6 +4,7 @@
 
 #[repr(C)]
 #[derive(Copy)]
+#[allow(missing_debug_implementations)]
 pub struct br_x509_minimal_context
 {
 	pub vtable: *const br_x509_class,

@@ -3,7 +3,7 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
+#[allow(missing_debug_implementations)]
 pub struct br_ssl_engine_context
 {
 	pub err: c_int,
@@ -91,14 +91,6 @@ pub struct br_ssl_engine_context
 	pub iecdsa: br_ecdsa_vrfy,
 }
 
-impl Clone for br_ssl_engine_context
-{
-	#[inline(always)]
-	fn clone(&self) -> Self
-	{
-		*self
-	}
-}
 
 impl Default for br_ssl_engine_context
 {

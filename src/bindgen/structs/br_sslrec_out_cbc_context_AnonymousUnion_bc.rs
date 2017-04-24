@@ -3,7 +3,8 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[allow(missing_debug_implementations)]
+#[allow(missing_copy_implementations)]
 pub struct br_sslrec_out_cbc_context_AnonymousUnion_bc
 {
 	pub _bindgen_data_: [u64; 50usize],

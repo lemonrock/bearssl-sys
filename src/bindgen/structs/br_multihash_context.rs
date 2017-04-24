@@ -4,6 +4,7 @@
 
 #[repr(C)]
 #[derive(Copy)]
+#[allow(missing_debug_implementations)]
 pub struct br_multihash_context
 {
 	pub buf: [c_uchar; 128usize],

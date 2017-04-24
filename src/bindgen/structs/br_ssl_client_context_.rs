@@ -3,7 +3,8 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[allow(missing_debug_implementations)]
+#[allow(missing_copy_implementations)]
 pub struct br_ssl_client_context_
 {
 	pub eng: br_ssl_engine_context,
