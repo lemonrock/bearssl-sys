@@ -6,7 +6,7 @@
 #![allow(non_upper_case_globals)]
 
 
-extern crate c;
+extern crate rust_c;
 
 
 use ::std::env;

@@ -30,4 +30,4 @@ codegen-units = 1
 libc = "0.2"
 
 [build-dependencies]
-c = { git = "https://github.com/lemonrock/rust-c.git", features = ["build"] }
+rust_c = { git = "https://github.com/lemonrock/rust-c.git", features = ["build"] }
