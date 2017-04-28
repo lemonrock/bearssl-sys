@@ -22,10 +22,10 @@ fn main()
 fn tool(absoluteHomeFolderPath: &str, programName: &'static str) -> String
 {
 	let fullPath = format!("{}/tools/{}", absoluteHomeFolderPath.to_owned(), programName.to_owned());
-	panicIfProcessNotSuccesful(programName, absoluteHomeFolderPath, Command::new(fullPath))
+	panicIfProcessNotSuccessful(programName, absoluteHomeFolderPath, Command::new(fullPath))
 }
 
-fn panicIfProcessNotSuccesful(programName: &'static str, absoluteHomeFolderPath: &str, mut command: Command) -> String
+fn panicIfProcessNotSuccessful(programName: &'static str, absoluteHomeFolderPath: &str, mut command: Command) -> String
 {
 	let output = command.output().unwrap_or_else(|error|
 	{
