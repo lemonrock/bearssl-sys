@@ -4,7 +4,7 @@
 
 extern "C"
 {
-	pub fn br_hmac_drbg_generate(ctx: *mut br_hmac_drbg_context, out: *mut c_void, len: size_t);
-	pub fn br_hmac_drbg_init(ctx: *mut br_hmac_drbg_context, digest_class: *const br_hash_class, seed: *const c_void, seed_len: size_t);
-	pub fn br_hmac_drbg_update(ctx: *mut br_hmac_drbg_context, seed: *const c_void, seed_len: size_t);
+	pub fn br_hmac_drbg_generate(ctx: *mut br_hmac_drbg_context, out: *mut c_void, len: usize);
+	pub fn br_hmac_drbg_init(ctx: *mut br_hmac_drbg_context, digest_class: *const br_hash_class, seed: *const c_void, seed_len: usize);
+	pub fn br_hmac_drbg_update(ctx: *mut br_hmac_drbg_context, seed: *const c_void, seed_len: usize);
 }

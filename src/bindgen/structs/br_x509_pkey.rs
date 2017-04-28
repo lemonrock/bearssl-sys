@@ -3,18 +3,9 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Copy)]
 pub struct br_x509_pkey
 {
 	pub key_type: c_uchar,
-	pub key: br_x509_pkey_AnonymousUnion_key,
-}
-
-impl Default for br_x509_pkey
-{
-	#[inline(always)]
-	fn default() -> Self
-	{
-		unsafe { zeroed() }
-	}
+	pub key: br_x509_pkey__bindgen_ty_1,
 }

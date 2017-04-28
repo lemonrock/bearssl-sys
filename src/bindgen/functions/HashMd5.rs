@@ -6,7 +6,7 @@ extern "C"
 {
 	pub fn br_md5_init(ctx: *mut br_md5_context);
 	pub fn br_md5_out(ctx: *const br_md5_context, out: *mut c_void);
-	pub fn br_md5_set_state(ctx: *mut br_md5_context, stb: *const c_void, count: uint64_t);
-	pub fn br_md5_state(ctx: *const br_md5_context, out: *mut c_void) -> uint64_t;
-	pub fn br_md5_update(ctx: *mut br_md5_context, data: *const c_void, len: size_t);
+	pub fn br_md5_set_state(ctx: *mut br_md5_context, stb: *const c_void, count: u64);
+	pub fn br_md5_state(ctx: *const br_md5_context, out: *mut c_void) -> u64;
+	pub fn br_md5_update(ctx: *mut br_md5_context, data: *const c_void, len: usize);
 }

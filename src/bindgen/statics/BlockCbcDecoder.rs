@@ -4,12 +4,12 @@
 
 extern "C"
 {
-	pub static br_aes_big_cbcdec_vtable: br_block_cbcdec_class;
-	pub static br_aes_ct64_cbcdec_vtable: br_block_cbcdec_class;
-	pub static br_aes_ct_cbcdec_vtable: br_block_cbcdec_class;
-	pub static br_aes_pwr8_cbcdec_vtable: br_block_cbcdec_class;
-	pub static br_aes_small_cbcdec_vtable: br_block_cbcdec_class;
-	pub static br_aes_x86ni_cbcdec_vtable: br_block_cbcdec_class;
-	pub static br_des_ct_cbcdec_vtable: br_block_cbcdec_class;
-	pub static br_des_tab_cbcdec_vtable: br_block_cbcdec_class;
+	#[link_name = "br_aes_big_cbcdec_vtable"] pub static br_aes_big_cbcdec_vtable: br_block_cbcdec_class;
+	#[link_name = "br_aes_ct64_cbcdec_vtable"] pub static br_aes_ct64_cbcdec_vtable: br_block_cbcdec_class;
+	#[link_name = "br_aes_ct_cbcdec_vtable"] pub static br_aes_ct_cbcdec_vtable: br_block_cbcdec_class;
+	#[link_name = "br_aes_pwr8_cbcdec_vtable"] pub static br_aes_pwr8_cbcdec_vtable: br_block_cbcdec_class;
+	#[link_name = "br_aes_small_cbcdec_vtable"] pub static br_aes_small_cbcdec_vtable: br_block_cbcdec_class;
+	#[link_name = "br_aes_x86ni_cbcdec_vtable"] pub static br_aes_x86ni_cbcdec_vtable: br_block_cbcdec_class;
+	#[link_name = "br_des_ct_cbcdec_vtable"] pub static br_des_ct_cbcdec_vtable: br_block_cbcdec_class;
+	#[link_name = "br_des_tab_cbcdec_vtable"] pub static br_des_tab_cbcdec_vtable: br_block_cbcdec_class;
 }

@@ -2,4 +2,4 @@
 // Copyright © 2016 The developers of bearssl-sys. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/lemonrock/bearssl-sys/master/COPYRIGHT.
 
 
-pub type br_tls_prf_impl = Option<unsafe extern "C" fn(dst: *mut c_void, len: size_t, secret: *const c_void, secret_len: size_t, label: *const c_char, seed: *const c_void, seed_len: size_t)>;
+pub type br_tls_prf_impl = Option<unsafe extern "C" fn(dst: *mut c_void, len: usize, secret: *const c_void, secret_len: usize, label: *const c_char, seed: *const c_void, seed_len: usize)>;

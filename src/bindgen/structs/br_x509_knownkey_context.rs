@@ -3,12 +3,21 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Copy)]
 pub struct br_x509_knownkey_context
 {
 	pub vtable: *const br_x509_class,
 	pub pkey: br_x509_pkey,
 	pub usages: c_uint,
+}
+
+impl Clone for br_x509_knownkey_context
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_x509_knownkey_context

@@ -3,11 +3,20 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_x500_name
 {
 	pub data: *mut c_uchar,
-	pub len: size_t,
+	pub len: usize,
+}
+
+impl Clone for br_x500_name
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_x500_name

@@ -2,4 +2,4 @@
 // Copyright © 2016 The developers of bearssl-sys. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/lemonrock/bearssl-sys/master/COPYRIGHT.
 
 
-pub type br_suite_translated = [uint16_t; 2usize];
+pub type br_suite_translated = [u16; 2usize];

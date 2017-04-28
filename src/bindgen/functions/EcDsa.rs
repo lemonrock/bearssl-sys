@@ -4,16 +4,16 @@
 
 extern "C"
 {
-	pub fn br_ecdsa_asn1_to_raw(sig: *mut c_void, sig_len: size_t) -> size_t;
-	pub fn br_ecdsa_i15_sign_asn1(impl_: *const br_ec_impl, hf: *const br_hash_class, hash_value: *const c_void, sk: *const br_ec_private_key, sig: *mut c_void) -> size_t;
-	pub fn br_ecdsa_i15_sign_raw(impl_: *const br_ec_impl, hf: *const br_hash_class, hash_value: *const c_void, sk: *const br_ec_private_key, sig: *mut c_void) -> size_t;
-	pub fn br_ecdsa_i15_vrfy_asn1(impl_: *const br_ec_impl, hash: *const c_void, hash_len: size_t, pk: *const br_ec_public_key, sig: *const c_void, sig_len: size_t) -> uint32_t;
-	pub fn br_ecdsa_i15_vrfy_raw(impl_: *const br_ec_impl, hash: *const c_void, hash_len: size_t, pk: *const br_ec_public_key, sig: *const c_void, sig_len: size_t) -> uint32_t;
-	pub fn br_ecdsa_i31_sign_asn1(impl_: *const br_ec_impl, hf: *const br_hash_class, hash_value: *const c_void, sk: *const br_ec_private_key, sig: *mut c_void) -> size_t;
-	pub fn br_ecdsa_i31_sign_raw(impl_: *const br_ec_impl, hf: *const br_hash_class, hash_value: *const c_void, sk: *const br_ec_private_key, sig: *mut c_void) -> size_t;
-	pub fn br_ecdsa_i31_vrfy_asn1(impl_: *const br_ec_impl, hash: *const c_void, hash_len: size_t, pk: *const br_ec_public_key, sig: *const c_void, sig_len: size_t) -> uint32_t;
-	pub fn br_ecdsa_i31_vrfy_raw(impl_: *const br_ec_impl, hash: *const c_void, hash_len: size_t, pk: *const br_ec_public_key, sig: *const c_void, sig_len: size_t) -> uint32_t;
-	pub fn br_ecdsa_raw_to_asn1(sig: *mut c_void, sig_len: size_t) -> size_t;
+	pub fn br_ecdsa_asn1_to_raw(sig: *mut c_void, sig_len: usize) -> usize;
+	pub fn br_ecdsa_i15_sign_asn1(impl_: *const br_ec_impl, hf: *const br_hash_class, hash_value: *const c_void, sk: *const br_ec_private_key, sig: *mut c_void) -> usize;
+	pub fn br_ecdsa_i15_sign_raw(impl_: *const br_ec_impl, hf: *const br_hash_class, hash_value: *const c_void, sk: *const br_ec_private_key, sig: *mut c_void) -> usize;
+	pub fn br_ecdsa_i15_vrfy_asn1(impl_: *const br_ec_impl, hash: *const c_void, hash_len: usize, pk: *const br_ec_public_key, sig: *const c_void, sig_len: usize) -> u32;
+	pub fn br_ecdsa_i15_vrfy_raw(impl_: *const br_ec_impl, hash: *const c_void, hash_len: usize, pk: *const br_ec_public_key, sig: *const c_void, sig_len: usize) -> u32;
+	pub fn br_ecdsa_i31_sign_asn1(impl_: *const br_ec_impl, hf: *const br_hash_class, hash_value: *const c_void, sk: *const br_ec_private_key, sig: *mut c_void) -> usize;
+	pub fn br_ecdsa_i31_sign_raw(impl_: *const br_ec_impl, hf: *const br_hash_class, hash_value: *const c_void, sk: *const br_ec_private_key, sig: *mut c_void) -> usize;
+	pub fn br_ecdsa_i31_vrfy_asn1(impl_: *const br_ec_impl, hash: *const c_void, hash_len: usize, pk: *const br_ec_public_key, sig: *const c_void, sig_len: usize) -> u32;
+	pub fn br_ecdsa_i31_vrfy_raw(impl_: *const br_ec_impl, hash: *const c_void, hash_len: usize, pk: *const br_ec_public_key, sig: *const c_void, sig_len: usize) -> u32;
+	pub fn br_ecdsa_raw_to_asn1(sig: *mut c_void, sig_len: usize) -> usize;
 	pub fn br_ecdsa_sign_asn1_get_default() -> br_ecdsa_sign;
 	pub fn br_ecdsa_sign_raw_get_default() -> br_ecdsa_sign;
 	pub fn br_ecdsa_vrfy_asn1_get_default() -> br_ecdsa_vrfy;

@@ -4,5 +4,5 @@
 
 extern "C"
 {
-	pub static br_hmac_drbg_vtable: br_prng_class;
+	#[link_name = "br_hmac_drbg_vtable"] pub static br_hmac_drbg_vtable: br_prng_class;
 }

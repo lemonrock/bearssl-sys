@@ -3,13 +3,22 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_ssl_server_policy_class_
 {
-	pub context_size: size_t,
+	pub context_size: usize,
 	pub choose: Option<unsafe extern "C" fn(pctx: *mut *const br_ssl_server_policy_class, cc: *const br_ssl_server_context, choices: *mut br_ssl_server_choices) -> c_int>,
-	pub do_keyx: Option<unsafe extern "C" fn(pctx: *mut *const br_ssl_server_policy_class, data: *mut c_uchar, len: *mut size_t) -> uint32_t>,
-	pub do_sign: Option<unsafe extern "C" fn(pctx: *mut *const br_ssl_server_policy_class, algo_id: c_uint, data: *mut c_uchar, hv_len: size_t, len: size_t) -> size_t>,
+	pub do_keyx: Option<unsafe extern "C" fn(pctx: *mut *const br_ssl_server_policy_class, data: *mut c_uchar, len: *mut usize) -> u32>,
+	pub do_sign: Option<unsafe extern "C" fn(pctx: *mut *const br_ssl_server_policy_class, algo_id: c_uint, data: *mut c_uchar, hv_len: usize, len: usize) -> usize>,
+}
+
+impl Clone for br_ssl_server_policy_class_
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_ssl_server_policy_class_

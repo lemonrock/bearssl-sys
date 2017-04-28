@@ -3,13 +3,22 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_ssl_server_choices
 {
-	pub cipher_suite: uint16_t,
+	pub cipher_suite: u16,
 	pub algo_id: c_uint,
 	pub chain: *const br_x509_certificate,
-	pub chain_len: size_t,
+	pub chain_len: usize,
+}
+
+impl Clone for br_ssl_server_choices
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_ssl_server_choices

@@ -3,38 +3,27 @@
 
 
 #[repr(C)]
-#[allow(missing_debug_implementations)]
 pub struct br_ssl_server_context_
 {
 	pub eng: br_ssl_engine_context,
-	pub client_max_version: uint16_t,
+	pub client_max_version: u16,
 	pub cache_vtable: *mut *const br_ssl_session_cache_class,
 	pub client_suites: [br_suite_translated; 40usize],
 	pub client_suites_num: c_uchar,
-	pub hashes: uint32_t,
-	pub curves: uint32_t,
+	pub hashes: u32,
+	pub curves: u32,
 	pub policy_vtable: *mut *const br_ssl_server_policy_class,
-	pub sign_hash_id: uint16_t,
-	pub chain_handler: br_ssl_server_context__AnonymousUnion_chain_handler,
+	pub sign_hash_id: u16,
+	pub chain_handler: br_ssl_server_context___bindgen_ty_1,
 	pub ecdhe_key: [c_uchar; 70usize],
-	pub ecdhe_key_len: size_t,
+	pub ecdhe_key_len: usize,
 	pub ta_names: *const br_x500_name,
 	pub tas: *const br_x509_trust_anchor,
-	pub num_tas: size_t,
-	pub cur_dn_index: size_t,
+	pub num_tas: usize,
+	pub cur_dn_index: usize,
 	pub cur_dn: *const c_uchar,
-	pub cur_dn_len: size_t,
+	pub cur_dn_len: usize,
 	pub hash_CV: [c_uchar; 64usize],
-	pub hash_CV_len: size_t,
+	pub hash_CV_len: usize,
 	pub hash_CV_id: c_int,
-}
-
-
-impl Default for br_ssl_server_context_
-{
-	#[inline(always)]
-	fn default() -> Self
-	{
-		unsafe { zeroed() }
-	}
 }

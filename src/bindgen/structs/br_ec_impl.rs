@@ -3,16 +3,25 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_ec_impl
 {
-	pub supported_curves: uint32_t,
-	pub generator: Option<unsafe extern "C" fn(curve: c_int, len: *mut size_t) -> *const c_uchar>,
-	pub order: Option<unsafe extern "C" fn(curve: c_int, len: *mut size_t) -> *const c_uchar>,
-	pub xoff: Option<unsafe extern "C" fn(curve: c_int, len: *mut size_t) -> size_t>,
-	pub mul: Option<unsafe extern "C" fn(G: *mut c_uchar, Glen: size_t, x: *const c_uchar, xlen: size_t, curve: c_int) -> uint32_t>,
-	pub mulgen: Option<unsafe extern "C" fn(R: *mut c_uchar, x: *const c_uchar, xlen: size_t, curve: c_int) -> size_t>,
-	pub muladd: Option<unsafe extern "C" fn(A: *mut c_uchar, B: *const c_uchar, len: size_t, x: *const c_uchar, xlen: size_t, y: *const c_uchar, ylen: size_t, curve: c_int) -> uint32_t>,
+	pub supported_curves: u32,
+	pub generator: Option<unsafe extern "C" fn(curve: c_int, len: *mut usize) -> *const c_uchar>,
+	pub order: Option<unsafe extern "C" fn(curve: c_int, len: *mut usize) -> *const c_uchar>,
+	pub xoff: Option<unsafe extern "C" fn(curve: c_int, len: *mut usize) -> usize>,
+	pub mul: Option<unsafe extern "C" fn(G: *mut c_uchar, Glen: usize, x: *const c_uchar, xlen: usize, curve: c_int) -> u32>,
+	pub mulgen: Option<unsafe extern "C" fn(R: *mut c_uchar, x: *const c_uchar, xlen: usize, curve: c_int) -> usize>,
+	pub muladd: Option<unsafe extern "C" fn(A: *mut c_uchar, B: *const c_uchar, len: usize, x: *const c_uchar, xlen: usize, y: *const c_uchar, ylen: usize, curve: c_int) -> u32>,
+}
+
+impl Clone for br_ec_impl
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_ec_impl

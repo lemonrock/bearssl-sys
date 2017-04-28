@@ -2,4 +2,4 @@
 // Copyright © 2016 The developers of bearssl-sys. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/lemonrock/bearssl-sys/master/COPYRIGHT.
 
 
-pub type br_ecdsa_sign = Option<unsafe extern "C" fn(impl_: *const br_ec_impl, hf: *const br_hash_class, hash_value: *const c_void, sk: *const br_ec_private_key, sig: *mut c_void) -> size_t>;
+pub type br_ecdsa_sign = Option<unsafe extern "C" fn(impl_: *const br_ec_impl, hf: *const br_hash_class, hash_value: *const c_void, sk: *const br_ec_private_key, sig: *mut c_void) -> usize>;

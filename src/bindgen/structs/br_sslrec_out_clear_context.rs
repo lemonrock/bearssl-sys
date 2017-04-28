@@ -3,10 +3,19 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_sslrec_out_clear_context
 {
 	pub vtable: *const br_sslrec_out_class,
+}
+
+impl Clone for br_sslrec_out_clear_context
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_sslrec_out_clear_context

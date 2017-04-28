@@ -4,11 +4,11 @@
 
 extern "C"
 {
-	pub static br_md5_vtable: br_hash_class;
-	pub static br_md5sha1_vtable: br_hash_class;
-	pub static br_sha1_vtable: br_hash_class;
-	pub static br_sha224_vtable: br_hash_class;
-	pub static br_sha256_vtable: br_hash_class;
-	pub static br_sha384_vtable: br_hash_class;
-	pub static br_sha512_vtable: br_hash_class;
+	#[link_name = "br_md5_vtable"] pub static br_md5_vtable: br_hash_class;
+	#[link_name = "br_md5sha1_vtable"] pub static br_md5sha1_vtable: br_hash_class;
+	#[link_name = "br_sha1_vtable"] pub static br_sha1_vtable: br_hash_class;
+	#[link_name = "br_sha224_vtable"] pub static br_sha224_vtable: br_hash_class;
+	#[link_name = "br_sha256_vtable"] pub static br_sha256_vtable: br_hash_class;
+	#[link_name = "br_sha384_vtable"] pub static br_sha384_vtable: br_hash_class;
+	#[link_name = "br_sha512_vtable"] pub static br_sha512_vtable: br_hash_class;
 }

@@ -3,22 +3,11 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
-#[allow(missing_debug_implementations)]
 pub struct br_hmac_context
 {
 	pub dig: br_hash_compat_context,
 	pub kso: [c_uchar; 64usize],
-	pub out_len: size_t,
-}
-
-impl Clone for br_hmac_context
-{
-	#[inline(always)]
-	fn clone(&self) -> Self
-	{
-		*self
-	}
+	pub out_len: usize,
 }
 
 impl Default for br_hmac_context

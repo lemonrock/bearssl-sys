@@ -3,16 +3,25 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_x509_class_
 {
-	pub context_size: size_t,
+	pub context_size: usize,
 	pub start_chain: Option<unsafe extern "C" fn(ctx: *mut *const br_x509_class, server_name: *const c_char)>,
-	pub start_cert: Option<unsafe extern "C" fn(ctx: *mut *const br_x509_class, length: uint32_t)>,
-	pub append: Option<unsafe extern "C" fn(ctx: *mut *const br_x509_class, buf: *const c_uchar, len: size_t)>,
+	pub start_cert: Option<unsafe extern "C" fn(ctx: *mut *const br_x509_class, length: u32)>,
+	pub append: Option<unsafe extern "C" fn(ctx: *mut *const br_x509_class, buf: *const c_uchar, len: usize)>,
 	pub end_cert: Option<unsafe extern "C" fn(ctx: *mut *const br_x509_class)>,
 	pub end_chain: Option<unsafe extern "C" fn(ctx: *mut *const br_x509_class) -> c_uint>,
 	pub get_pkey: Option<unsafe extern "C" fn(ctx: *const *const br_x509_class, usages: *mut c_uint) -> *const br_x509_pkey>,
+}
+
+impl Clone for br_x509_class_
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_x509_class_

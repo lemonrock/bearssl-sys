@@ -3,24 +3,13 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
-#[allow(missing_debug_implementations)]
 pub struct br_multihash_context
 {
 	pub buf: [c_uchar; 128usize],
-	pub count: uint64_t,
-	pub val_32: [uint32_t; 25usize],
-	pub val_64: [uint64_t; 16usize],
+	pub count: u64,
+	pub val_32: [u32; 25usize],
+	pub val_64: [u64; 16usize],
 	pub impl_: [*const br_hash_class; 6usize],
-}
-
-impl Clone for br_multihash_context
-{
-	#[inline(always)]
-	fn clone(&self) -> Self
-	{
-		*self
-	}
 }
 
 impl Default for br_multihash_context

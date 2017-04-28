@@ -3,20 +3,29 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_rsa_private_key
 {
-	pub n_bitlen: uint32_t,
+	pub n_bitlen: u32,
 	pub p: *mut c_uchar,
-	pub plen: size_t,
+	pub plen: usize,
 	pub q: *mut c_uchar,
-	pub qlen: size_t,
+	pub qlen: usize,
 	pub dp: *mut c_uchar,
-	pub dplen: size_t,
+	pub dplen: usize,
 	pub dq: *mut c_uchar,
-	pub dqlen: size_t,
+	pub dqlen: usize,
 	pub iq: *mut c_uchar,
-	pub iqlen: size_t,
+	pub iqlen: usize,
+}
+
+impl Clone for br_rsa_private_key
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_rsa_private_key

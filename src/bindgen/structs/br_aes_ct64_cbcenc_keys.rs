@@ -3,12 +3,21 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_aes_ct64_cbcenc_keys
 {
 	pub vtable: *const br_block_cbcenc_class,
-	pub skey: [uint64_t; 30usize],
+	pub skey: [u64; 30usize],
 	pub num_rounds: c_uint,
+}
+
+impl Clone for br_aes_ct64_cbcenc_keys
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_aes_ct64_cbcenc_keys

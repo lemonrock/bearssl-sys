@@ -2,6 +2,6 @@
 // Copyright © 2016 The developers of bearssl-sys. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/lemonrock/bearssl-sys/master/COPYRIGHT.
 
 
-pub const BR_X509_BUFSIZE_KEY: c_int = 520;
-pub const BR_X509_BUFSIZE_SIG: c_int = 512;
-pub const BR_X509_TA_CA: c_int = 1;
+pub const BR_X509_BUFSIZE_KEY: c_uint = 520;
+pub const BR_X509_BUFSIZE_SIG: c_uint = 512;
+pub const BR_X509_TA_CA: c_uint = 1;

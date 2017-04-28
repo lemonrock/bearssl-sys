@@ -3,11 +3,20 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_x509_certificate
 {
 	pub data: *mut c_uchar,
-	pub data_len: size_t,
+	pub data_len: usize,
+}
+
+impl Clone for br_x509_certificate
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_x509_certificate

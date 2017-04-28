@@ -3,23 +3,12 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
-#[allow(missing_debug_implementations)]
 pub struct br_sha384_context
 {
 	pub vtable: *const br_hash_class,
 	pub buf: [c_uchar; 128usize],
-	pub count: uint64_t,
-	pub val: [uint64_t; 8usize],
-}
-
-impl Clone for br_sha384_context
-{
-	#[inline(always)]
-	fn clone(&self) -> Self
-	{
-		*self
-	}
+	pub count: u64,
+	pub val: [u64; 8usize],
 }
 
 impl Default for br_sha384_context

@@ -3,24 +3,13 @@
 
 
 #[repr(C)]
-#[allow(missing_debug_implementations)]
-#[allow(missing_copy_implementations)]
 pub struct br_sslrec_out_cbc_context
 {
 	pub vtable: *const br_sslrec_out_cbc_class,
-	pub seq: uint64_t,
-	pub bc: br_sslrec_out_cbc_context_AnonymousUnion_bc,
+	pub seq: u64,
+	pub bc: br_sslrec_out_cbc_context__bindgen_ty_1,
 	pub mac: br_hmac_key_context,
-	pub mac_len: size_t,
+	pub mac_len: usize,
 	pub iv: [c_uchar; 16usize],
 	pub explicit_IV: c_int,
-}
-
-impl Default for br_sslrec_out_cbc_context
-{
-	#[inline(always)]
-	fn default() -> Self
-	{
-		unsafe { zeroed() }
-	}
 }

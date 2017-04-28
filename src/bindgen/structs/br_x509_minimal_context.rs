@@ -3,35 +3,33 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
-#[allow(missing_debug_implementations)]
 pub struct br_x509_minimal_context
 {
 	pub vtable: *const br_x509_class,
 	pub pkey: br_x509_pkey,
-	pub cpu: br_x509_minimal_context_AnonymousStruct_cpu,
-	pub dp_stack: [uint32_t; 32usize],
-	pub rp_stack: [uint32_t; 32usize],
+	pub cpu: br_x509_minimal_context__bindgen_ty_1,
+	pub dp_stack: [u32; 32usize],
+	pub rp_stack: [u32; 32usize],
 	pub err: c_int,
 	pub server_name: *const c_char,
 	pub key_usages: c_uchar,
-	pub days: uint32_t,
-	pub seconds: uint32_t,
-	pub cert_length: uint32_t,
-	pub num_certs: uint32_t,
+	pub days: u32,
+	pub seconds: u32,
+	pub cert_length: u32,
+	pub num_certs: u32,
 	pub hbuf: *const c_uchar,
-	pub hlen: size_t,
+	pub hlen: usize,
 	pub pad: [c_uchar; 256usize],
 	pub ee_pkey_data: [c_uchar; 520usize],
 	pub pkey_data: [c_uchar; 520usize],
 	pub cert_signer_key_type: c_uchar,
-	pub cert_sig_hash_oid: uint16_t,
+	pub cert_sig_hash_oid: u16,
 	pub cert_sig_hash_len: c_uchar,
 	pub cert_sig: [c_uchar; 512usize],
-	pub cert_sig_len: uint16_t,
-	pub min_rsa_size: int16_t,
+	pub cert_sig_len: u16,
+	pub min_rsa_size: i16,
 	pub trust_anchors: *const br_x509_trust_anchor,
-	pub trust_anchors_num: size_t,
+	pub trust_anchors_num: usize,
 	pub do_mhash: c_uchar,
 	pub mhash: br_multihash_context,
 	pub tbs_hash: [c_uchar; 64usize],
@@ -42,26 +40,8 @@ pub struct br_x509_minimal_context
 	pub next_dn_hash: [c_uchar; 64usize],
 	pub saved_dn_hash: [c_uchar; 64usize],
 	pub name_elts: *mut br_name_element,
-	pub num_name_elts: size_t,
+	pub num_name_elts: usize,
 	pub irsa: br_rsa_pkcs1_vrfy,
 	pub iecdsa: br_ecdsa_vrfy,
 	pub iec: *const br_ec_impl,
-}
-
-impl Clone for br_x509_minimal_context
-{
-	#[inline(always)]
-	fn clone(&self) -> Self
-	{
-		*self
-	}
-}
-
-impl Default for br_x509_minimal_context
-{
-	#[inline(always)]
-	fn default() -> Self
-	{
-		unsafe { zeroed() }
-	}
 }

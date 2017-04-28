@@ -3,22 +3,11 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
-#[allow(missing_debug_implementations)]
 pub struct br_hmac_key_context
 {
 	pub dig_vtable: *const br_hash_class,
 	pub ksi: [c_uchar; 64usize],
 	pub kso: [c_uchar; 64usize],
-}
-
-impl Clone for br_hmac_key_context
-{
-	#[inline(always)]
-	fn clone(&self) -> Self
-	{
-		*self
-	}
 }
 
 impl Default for br_hmac_key_context

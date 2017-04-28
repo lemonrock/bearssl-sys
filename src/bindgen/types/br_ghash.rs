@@ -2,4 +2,4 @@
 // Copyright © 2016 The developers of bearssl-sys. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/lemonrock/bearssl-sys/master/COPYRIGHT.
 
 
-pub type br_ghash = Option<unsafe extern "C" fn(y: *mut c_void, h: *const c_void, data: *const c_void, len: size_t)>;
+pub type br_ghash = Option<unsafe extern "C" fn(y: *mut c_void, h: *const c_void, data: *const c_void, len: usize)>;

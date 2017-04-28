@@ -3,16 +3,25 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_hash_class_
 {
-	pub context_size: size_t,
-	pub desc: uint32_t,
+	pub context_size: usize,
+	pub desc: u32,
 	pub init: Option<unsafe extern "C" fn(ctx: *mut *const br_hash_class)>,
-	pub update: Option<unsafe extern "C" fn(ctx: *mut *const br_hash_class, data: *const c_void, len: size_t)>,
+	pub update: Option<unsafe extern "C" fn(ctx: *mut *const br_hash_class, data: *const c_void, len: usize)>,
 	pub out: Option<unsafe extern "C" fn(ctx: *const *const br_hash_class, dst: *mut c_void)>,
-	pub state: Option<unsafe extern "C" fn(ctx: *const *const br_hash_class, dst: *mut c_void) -> uint64_t>,
-	pub set_state: Option<unsafe extern "C" fn(ctx: *mut *const br_hash_class, stb: *const c_void, count: uint64_t)>,
+	pub state: Option<unsafe extern "C" fn(ctx: *const *const br_hash_class, dst: *mut c_void) -> u64>,
+	pub set_state: Option<unsafe extern "C" fn(ctx: *mut *const br_hash_class, stb: *const c_void, count: u64)>,
+}
+
+impl Clone for br_hash_class_
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_hash_class_

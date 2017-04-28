@@ -3,24 +3,13 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
-#[allow(missing_debug_implementations)]
 pub struct br_md5sha1_context
 {
 	pub vtable: *const br_hash_class,
 	pub buf: [c_uchar; 64usize],
-	pub count: uint64_t,
-	pub val_md5: [uint32_t; 4usize],
-	pub val_sha1: [uint32_t; 5usize],
-}
-
-impl Clone for br_md5sha1_context
-{
-	#[inline(always)]
-	fn clone(&self) -> Self
-	{
-		*self
-	}
+	pub count: u64,
+	pub val_md5: [u32; 4usize],
+	pub val_sha1: [u32; 5usize],
 }
 
 impl Default for br_md5sha1_context

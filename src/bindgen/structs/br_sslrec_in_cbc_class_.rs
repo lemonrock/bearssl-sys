@@ -3,11 +3,20 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_sslrec_in_cbc_class_
 {
 	pub inner: br_sslrec_in_class,
-	pub init: Option<unsafe extern "C" fn(ctx: *mut *const br_sslrec_in_cbc_class, bc_impl: *const br_block_cbcdec_class, bc_key: *const c_void, bc_key_len: size_t, dig_impl: *const br_hash_class, mac_key: *const c_void, mac_key_len: size_t, mac_out_len: size_t, iv: *const c_void)>,
+	pub init: Option<unsafe extern "C" fn(ctx: *mut *const br_sslrec_in_cbc_class, bc_impl: *const br_block_cbcdec_class, bc_key: *const c_void, bc_key_len: usize, dig_impl: *const br_hash_class, mac_key: *const c_void, mac_key_len: usize, mac_out_len: usize, iv: *const c_void)>,
+}
+
+impl Clone for br_sslrec_in_cbc_class_
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_sslrec_in_cbc_class_

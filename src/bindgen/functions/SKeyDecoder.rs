@@ -5,5 +5,5 @@
 extern "C"
 {
 	pub fn br_skey_decoder_init(ctx: *mut br_skey_decoder_context);
-	pub fn br_skey_decoder_push(ctx: *mut br_skey_decoder_context, data: *const c_void, len: size_t);
+	pub fn br_skey_decoder_push(ctx: *mut br_skey_decoder_context, data: *const c_void, len: usize);
 }

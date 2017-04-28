@@ -4,10 +4,10 @@
 
 extern "C"
 {
-	pub static br_aes_big_ctr_vtable: br_block_ctr_class;
-	pub static br_aes_ct64_ctr_vtable: br_block_ctr_class;
-	pub static br_aes_ct_ctr_vtable: br_block_ctr_class;
-	pub static br_aes_pwr8_ctr_vtable: br_block_ctr_class;
-	pub static br_aes_small_ctr_vtable: br_block_ctr_class;
-	pub static br_aes_x86ni_ctr_vtable: br_block_ctr_class;
+	#[link_name = "br_aes_big_ctr_vtable"] pub static br_aes_big_ctr_vtable: br_block_ctr_class;
+	#[link_name = "br_aes_ct64_ctr_vtable"] pub static br_aes_ct64_ctr_vtable: br_block_ctr_class;
+	#[link_name = "br_aes_ct_ctr_vtable"] pub static br_aes_ct_ctr_vtable: br_block_ctr_class;
+	#[link_name = "br_aes_pwr8_ctr_vtable"] pub static br_aes_pwr8_ctr_vtable: br_block_ctr_class;
+	#[link_name = "br_aes_small_ctr_vtable"] pub static br_aes_small_ctr_vtable: br_block_ctr_class;
+	#[link_name = "br_aes_x86ni_ctr_vtable"] pub static br_aes_x86ni_ctr_vtable: br_block_ctr_class;
 }

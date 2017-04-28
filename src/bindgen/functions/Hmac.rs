@@ -4,9 +4,9 @@
 
 extern "C"
 {
-	pub fn br_hmac_init(ctx: *mut br_hmac_context, kc: *const br_hmac_key_context, out_len: size_t);
-	pub fn br_hmac_key_init(kc: *mut br_hmac_key_context, digest_vtable: *const br_hash_class, key: *const c_void, key_len: size_t);
-	pub fn br_hmac_out(ctx: *const br_hmac_context, out: *mut c_void) -> size_t;
-	pub fn br_hmac_outCT(ctx: *const br_hmac_context, data: *const c_void, len: size_t, min_len: size_t, max_len: size_t, out: *mut c_void) -> size_t;
-	pub fn br_hmac_update(ctx: *mut br_hmac_context, data: *const c_void, len: size_t);
+	pub fn br_hmac_init(ctx: *mut br_hmac_context, kc: *const br_hmac_key_context, out_len: usize);
+	pub fn br_hmac_key_init(kc: *mut br_hmac_key_context, digest_vtable: *const br_hash_class, key: *const c_void, key_len: usize);
+	pub fn br_hmac_out(ctx: *const br_hmac_context, out: *mut c_void) -> usize;
+	pub fn br_hmac_outCT(ctx: *const br_hmac_context, data: *const c_void, len: usize, min_len: usize, max_len: usize, out: *mut c_void) -> usize;
+	pub fn br_hmac_update(ctx: *mut br_hmac_context, data: *const c_void, len: usize);
 }

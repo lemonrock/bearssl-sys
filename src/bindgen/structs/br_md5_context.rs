@@ -3,23 +3,12 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
-#[allow(missing_debug_implementations)]
 pub struct br_md5_context
 {
 	pub vtable: *const br_hash_class,
 	pub buf: [c_uchar; 64usize],
-	pub count: uint64_t,
-	pub val: [uint32_t; 4usize],
-}
-
-impl Clone for br_md5_context
-{
-	#[inline(always)]
-	fn clone(&self) -> Self
-	{
-		*self
-	}
+	pub count: u64,
+	pub val: [u32; 4usize],
 }
 
 impl Default for br_md5_context

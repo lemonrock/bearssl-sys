@@ -4,9 +4,9 @@
 
 extern "C"
 {
-	pub fn br_poly1305_ctmul32_run(key: *const c_void, iv: *const c_void, data: *mut c_void, len: size_t, aad: *const c_void, aad_len: size_t, tag: *mut c_void, ichacha: br_chacha20_run, encrypt: c_int);
-	pub fn br_poly1305_ctmul_run(key: *const c_void, iv: *const c_void, data: *mut c_void, len: size_t, aad: *const c_void, aad_len: size_t, tag: *mut c_void, ichacha: br_chacha20_run, encrypt: c_int);
+	pub fn br_poly1305_ctmul32_run(key: *const c_void, iv: *const c_void, data: *mut c_void, len: usize, aad: *const c_void, aad_len: usize, tag: *mut c_void, ichacha: br_chacha20_run, encrypt: c_int);
+	pub fn br_poly1305_ctmul_run(key: *const c_void, iv: *const c_void, data: *mut c_void, len: usize, aad: *const c_void, aad_len: usize, tag: *mut c_void, ichacha: br_chacha20_run, encrypt: c_int);
 	pub fn br_poly1305_ctmulq_get() -> br_poly1305_run;
-	pub fn br_poly1305_ctmulq_run(key: *const c_void, iv: *const c_void, data: *mut c_void, len: size_t, aad: *const c_void, aad_len: size_t, tag: *mut c_void, ichacha: br_chacha20_run, encrypt: c_int);
-	pub fn br_poly1305_i15_run(key: *const c_void, iv: *const c_void, data: *mut c_void, len: size_t, aad: *const c_void, aad_len: size_t, tag: *mut c_void, ichacha: br_chacha20_run, encrypt: c_int);
+	pub fn br_poly1305_ctmulq_run(key: *const c_void, iv: *const c_void, data: *mut c_void, len: usize, aad: *const c_void, aad_len: usize, tag: *mut c_void, ichacha: br_chacha20_run, encrypt: c_int);
+	pub fn br_poly1305_i15_run(key: *const c_void, iv: *const c_void, data: *mut c_void, len: usize, aad: *const c_void, aad_len: usize, tag: *mut c_void, ichacha: br_chacha20_run, encrypt: c_int);
 }

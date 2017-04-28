@@ -3,22 +3,13 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Copy)]
 pub struct br_sslrec_chapol_context
 {
-	pub vtable: br_sslrec_chapol_context_AnonymousUnion_vtable,
-	pub seq: uint64_t,
+	pub vtable: br_sslrec_chapol_context__bindgen_ty_1,
+	pub seq: u64,
 	pub key: [c_uchar; 32usize],
 	pub iv: [c_uchar; 12usize],
 	pub ichacha: br_chacha20_run,
 	pub ipoly: br_poly1305_run,
-}
-
-impl Default for br_sslrec_chapol_context
-{
-	#[inline(always)]
-	fn default() -> Self
-	{
-		unsafe { zeroed() }
-	}
 }

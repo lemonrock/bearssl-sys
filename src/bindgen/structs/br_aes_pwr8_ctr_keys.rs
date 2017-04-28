@@ -3,29 +3,9 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
-#[allow(missing_debug_implementations)]
 pub struct br_aes_pwr8_ctr_keys
 {
 	pub vtable: *const br_block_ctr_class,
-	pub skey: br_aes_pwr8_ctr_keys_AnonymousUnion_skey,
+	pub skey: br_aes_pwr8_ctr_keys__bindgen_ty_1,
 	pub num_rounds: c_uint,
-}
-
-impl Clone for br_aes_pwr8_ctr_keys
-{
-	#[inline(always)]
-	fn clone(&self) -> Self
-	{
-		*self
-	}
-}
-
-impl Default for br_aes_pwr8_ctr_keys
-{
-	#[inline(always)]
-	fn default() -> Self
-	{
-		unsafe { zeroed() }
-	}
 }

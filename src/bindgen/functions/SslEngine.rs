@@ -7,18 +7,18 @@ extern "C"
 	pub fn br_ssl_engine_close(cc: *mut br_ssl_engine_context);
 	pub fn br_ssl_engine_current_state(cc: *const br_ssl_engine_context) -> c_uint;
 	pub fn br_ssl_engine_flush(cc: *mut br_ssl_engine_context, force: c_int);
-	pub fn br_ssl_engine_inject_entropy(cc: *mut br_ssl_engine_context, data: *const c_void, len: size_t);
-	pub fn br_ssl_engine_recvapp_ack(cc: *mut br_ssl_engine_context, len: size_t);
-	pub fn br_ssl_engine_recvapp_buf(cc: *const br_ssl_engine_context, len: *mut size_t) -> *mut c_uchar;
-	pub fn br_ssl_engine_recvrec_ack(cc: *mut br_ssl_engine_context, len: size_t);
-	pub fn br_ssl_engine_recvrec_buf(cc: *const br_ssl_engine_context, len: *mut size_t) -> *mut c_uchar;
+	pub fn br_ssl_engine_inject_entropy(cc: *mut br_ssl_engine_context, data: *const c_void, len: usize);
+	pub fn br_ssl_engine_recvapp_ack(cc: *mut br_ssl_engine_context, len: usize);
+	pub fn br_ssl_engine_recvapp_buf(cc: *const br_ssl_engine_context, len: *mut usize) -> *mut c_uchar;
+	pub fn br_ssl_engine_recvrec_ack(cc: *mut br_ssl_engine_context, len: usize);
+	pub fn br_ssl_engine_recvrec_buf(cc: *const br_ssl_engine_context, len: *mut usize) -> *mut c_uchar;
 	pub fn br_ssl_engine_renegotiate(cc: *mut br_ssl_engine_context) -> c_int;
-	pub fn br_ssl_engine_sendapp_ack(cc: *mut br_ssl_engine_context, len: size_t);
-	pub fn br_ssl_engine_sendapp_buf(cc: *const br_ssl_engine_context, len: *mut size_t) -> *mut c_uchar;
-	pub fn br_ssl_engine_sendrec_ack(cc: *mut br_ssl_engine_context, len: size_t);
-	pub fn br_ssl_engine_sendrec_buf(cc: *const br_ssl_engine_context, len: *mut size_t) -> *mut c_uchar;
-	pub fn br_ssl_engine_set_buffer(cc: *mut br_ssl_engine_context, iobuf: *mut c_void, iobuf_len: size_t, bidi: c_int);
-	pub fn br_ssl_engine_set_buffers_bidi(cc: *mut br_ssl_engine_context, ibuf: *mut c_void, ibuf_len: size_t, obuf: *mut c_void, obuf_len: size_t);
+	pub fn br_ssl_engine_sendapp_ack(cc: *mut br_ssl_engine_context, len: usize);
+	pub fn br_ssl_engine_sendapp_buf(cc: *const br_ssl_engine_context, len: *mut usize) -> *mut c_uchar;
+	pub fn br_ssl_engine_sendrec_ack(cc: *mut br_ssl_engine_context, len: usize);
+	pub fn br_ssl_engine_sendrec_buf(cc: *const br_ssl_engine_context, len: *mut usize) -> *mut c_uchar;
+	pub fn br_ssl_engine_set_buffer(cc: *mut br_ssl_engine_context, iobuf: *mut c_void, iobuf_len: usize, bidi: c_int);
+	pub fn br_ssl_engine_set_buffers_bidi(cc: *mut br_ssl_engine_context, ibuf: *mut c_void, ibuf_len: usize, obuf: *mut c_void, obuf_len: usize);
 	pub fn br_ssl_engine_set_default_aes_cbc(cc: *mut br_ssl_engine_context);
 	pub fn br_ssl_engine_set_default_aes_gcm(cc: *mut br_ssl_engine_context);
 	pub fn br_ssl_engine_set_default_chapol(cc: *mut br_ssl_engine_context);
@@ -26,5 +26,5 @@ extern "C"
 	pub fn br_ssl_engine_set_default_ec(cc: *mut br_ssl_engine_context);
 	pub fn br_ssl_engine_set_default_ecdsa(cc: *mut br_ssl_engine_context);
 	pub fn br_ssl_engine_set_default_rsavrfy(cc: *mut br_ssl_engine_context);
-	pub fn br_ssl_engine_set_suites(cc: *mut br_ssl_engine_context, suites: *const uint16_t, suites_num: size_t);
+	pub fn br_ssl_engine_set_suites(cc: *mut br_ssl_engine_context, suites: *const u16, suites_num: usize);
 }

@@ -4,6 +4,6 @@
 
 extern "C"
 {
-	pub fn br_x509_decoder_init(ctx: *mut br_x509_decoder_context, append_dn: Option<unsafe extern "C" fn(ctx: *mut c_void, buf: *const c_void, len: size_t)>, append_dn_ctx: *mut c_void);
-	pub fn br_x509_decoder_push(ctx: *mut br_x509_decoder_context, data: *const c_void, len: size_t);
+	pub fn br_x509_decoder_init(ctx: *mut br_x509_decoder_context, append_dn: Option<unsafe extern "C" fn(ctx: *mut c_void, buf: *const c_void, len: usize)>, append_dn_ctx: *mut c_void);
+	pub fn br_x509_decoder_push(ctx: *mut br_x509_decoder_context, data: *const c_void, len: usize);
 }

@@ -3,14 +3,23 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_block_cbcdec_class_
 {
-	pub context_size: size_t,
+	pub context_size: usize,
 	pub block_size: c_uint,
 	pub log_block_size: c_uint,
-	pub init: Option<unsafe extern "C" fn(ctx: *mut *const br_block_cbcdec_class, key: *const c_void, key_len: size_t)>,
-	pub run: Option<unsafe extern "C" fn(ctx: *const *const br_block_cbcdec_class, iv: *mut c_void, data: *mut c_void, len: size_t)>,
+	pub init: Option<unsafe extern "C" fn(ctx: *mut *const br_block_cbcdec_class, key: *const c_void, key_len: usize)>,
+	pub run: Option<unsafe extern "C" fn(ctx: *const *const br_block_cbcdec_class, iv: *mut c_void, data: *mut c_void, len: usize)>,
+}
+
+impl Clone for br_block_cbcdec_class_
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_block_cbcdec_class_

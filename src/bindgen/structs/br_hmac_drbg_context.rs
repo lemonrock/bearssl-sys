@@ -3,23 +3,12 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
-#[allow(missing_debug_implementations)]
 pub struct br_hmac_drbg_context
 {
 	pub vtable: *const br_prng_class,
 	pub K: [c_uchar; 64usize],
 	pub V: [c_uchar; 64usize],
 	pub digest_class: *const br_hash_class,
-}
-
-impl Clone for br_hmac_drbg_context
-{
-	#[inline(always)]
-	fn clone(&self) -> Self
-	{
-		*self
-	}
 }
 
 impl Default for br_hmac_drbg_context

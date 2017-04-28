@@ -4,29 +4,29 @@
 
 extern "C"
 {
-	pub fn br_rsa_i15_pkcs1_sign(hash_oid: *const c_uchar, hash: *const c_uchar, hash_len: size_t, sk: *const br_rsa_private_key, x: *mut c_uchar) -> uint32_t;
-	pub fn br_rsa_i15_pkcs1_vrfy(x: *const c_uchar, xlen: size_t, hash_oid: *const c_uchar, hash_len: size_t, pk: *const br_rsa_public_key, hash_out: *mut c_uchar) -> uint32_t;
-	pub fn br_rsa_i15_private(x: *mut c_uchar, sk: *const br_rsa_private_key) -> uint32_t;
-	pub fn br_rsa_i15_public(x: *mut c_uchar, xlen: size_t, pk: *const br_rsa_public_key) -> uint32_t;
-	pub fn br_rsa_i31_pkcs1_sign(hash_oid: *const c_uchar, hash: *const c_uchar, hash_len: size_t, sk: *const br_rsa_private_key, x: *mut c_uchar) -> uint32_t;
-	pub fn br_rsa_i31_pkcs1_vrfy(x: *const c_uchar, xlen: size_t, hash_oid: *const c_uchar, hash_len: size_t, pk: *const br_rsa_public_key, hash_out: *mut c_uchar) -> uint32_t;
-	pub fn br_rsa_i31_private(x: *mut c_uchar, sk: *const br_rsa_private_key) -> uint32_t;
-	pub fn br_rsa_i31_public(x: *mut c_uchar, xlen: size_t, pk: *const br_rsa_public_key) -> uint32_t;
-	pub fn br_rsa_i32_pkcs1_sign(hash_oid: *const c_uchar, hash: *const c_uchar, hash_len: size_t, sk: *const br_rsa_private_key, x: *mut c_uchar) -> uint32_t;
-	pub fn br_rsa_i32_pkcs1_vrfy(x: *const c_uchar, xlen: size_t, hash_oid: *const c_uchar, hash_len: size_t, pk: *const br_rsa_public_key, hash_out: *mut c_uchar) -> uint32_t;
-	pub fn br_rsa_i32_private(x: *mut c_uchar, sk: *const br_rsa_private_key) -> uint32_t;
-	pub fn br_rsa_i32_public(x: *mut c_uchar, xlen: size_t, pk: *const br_rsa_public_key) -> uint32_t;
-	pub fn br_rsa_i62_pkcs1_sign(hash_oid: *const c_uchar, hash: *const c_uchar, hash_len: size_t, sk: *const br_rsa_private_key, x: *mut c_uchar) -> uint32_t;
+	pub fn br_rsa_i15_pkcs1_sign(hash_oid: *const c_uchar, hash: *const c_uchar, hash_len: usize, sk: *const br_rsa_private_key, x: *mut c_uchar) -> u32;
+	pub fn br_rsa_i15_pkcs1_vrfy(x: *const c_uchar, xlen: usize, hash_oid: *const c_uchar, hash_len: usize, pk: *const br_rsa_public_key, hash_out: *mut c_uchar) -> u32;
+	pub fn br_rsa_i15_private(x: *mut c_uchar, sk: *const br_rsa_private_key) -> u32;
+	pub fn br_rsa_i15_public(x: *mut c_uchar, xlen: usize, pk: *const br_rsa_public_key) -> u32;
+	pub fn br_rsa_i31_pkcs1_sign(hash_oid: *const c_uchar, hash: *const c_uchar, hash_len: usize, sk: *const br_rsa_private_key, x: *mut c_uchar) -> u32;
+	pub fn br_rsa_i31_pkcs1_vrfy(x: *const c_uchar, xlen: usize, hash_oid: *const c_uchar, hash_len: usize, pk: *const br_rsa_public_key, hash_out: *mut c_uchar) -> u32;
+	pub fn br_rsa_i31_private(x: *mut c_uchar, sk: *const br_rsa_private_key) -> u32;
+	pub fn br_rsa_i31_public(x: *mut c_uchar, xlen: usize, pk: *const br_rsa_public_key) -> u32;
+	pub fn br_rsa_i32_pkcs1_sign(hash_oid: *const c_uchar, hash: *const c_uchar, hash_len: usize, sk: *const br_rsa_private_key, x: *mut c_uchar) -> u32;
+	pub fn br_rsa_i32_pkcs1_vrfy(x: *const c_uchar, xlen: usize, hash_oid: *const c_uchar, hash_len: usize, pk: *const br_rsa_public_key, hash_out: *mut c_uchar) -> u32;
+	pub fn br_rsa_i32_private(x: *mut c_uchar, sk: *const br_rsa_private_key) -> u32;
+	pub fn br_rsa_i32_public(x: *mut c_uchar, xlen: usize, pk: *const br_rsa_public_key) -> u32;
+	pub fn br_rsa_i62_pkcs1_sign(hash_oid: *const c_uchar, hash: *const c_uchar, hash_len: usize, sk: *const br_rsa_private_key, x: *mut c_uchar) -> u32;
 	pub fn br_rsa_i62_pkcs1_sign_get() -> br_rsa_pkcs1_sign;
-	pub fn br_rsa_i62_pkcs1_vrfy(x: *const c_uchar, xlen: size_t, hash_oid: *const c_uchar, hash_len: size_t, pk: *const br_rsa_public_key, hash_out: *mut c_uchar) -> uint32_t;
+	pub fn br_rsa_i62_pkcs1_vrfy(x: *const c_uchar, xlen: usize, hash_oid: *const c_uchar, hash_len: usize, pk: *const br_rsa_public_key, hash_out: *mut c_uchar) -> u32;
 	pub fn br_rsa_i62_pkcs1_vrfy_get() -> br_rsa_pkcs1_vrfy;
-	pub fn br_rsa_i62_private(x: *mut c_uchar, sk: *const br_rsa_private_key) -> uint32_t;
+	pub fn br_rsa_i62_private(x: *mut c_uchar, sk: *const br_rsa_private_key) -> u32;
 	pub fn br_rsa_i62_private_get() -> br_rsa_private;
-	pub fn br_rsa_i62_public(x: *mut c_uchar, xlen: size_t, pk: *const br_rsa_public_key) -> uint32_t;
+	pub fn br_rsa_i62_public(x: *mut c_uchar, xlen: usize, pk: *const br_rsa_public_key) -> u32;
 	pub fn br_rsa_i62_public_get() -> br_rsa_public;
 	pub fn br_rsa_pkcs1_sign_get_default() -> br_rsa_pkcs1_sign;
 	pub fn br_rsa_pkcs1_vrfy_get_default() -> br_rsa_pkcs1_vrfy;
 	pub fn br_rsa_private_get_default() -> br_rsa_private;
 	pub fn br_rsa_public_get_default() -> br_rsa_public;
-	pub fn br_rsa_ssl_decrypt(core: br_rsa_private, sk: *const br_rsa_private_key, data: *mut c_uchar, len: size_t) -> uint32_t;
+	pub fn br_rsa_ssl_decrypt(core: br_rsa_private, sk: *const br_rsa_private_key, data: *mut c_uchar, len: usize) -> u32;
 }

@@ -3,36 +3,16 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
-#[allow(missing_debug_implementations)]
 pub struct br_skey_decoder_context
 {
-	pub key: br_skey_decoder_context_AnonymousUnion_key,
-	pub cpu: br_skey_decoder_context_AnonymousStruct_cpu,
-	pub dp_stack: [uint32_t; 32usize],
-	pub rp_stack: [uint32_t; 32usize],
+	pub key: br_skey_decoder_context__bindgen_ty_1,
+	pub cpu: br_skey_decoder_context__bindgen_ty_2,
+	pub dp_stack: [u32; 32usize],
+	pub rp_stack: [u32; 32usize],
 	pub err: c_int,
 	pub hbuf: *const c_uchar,
-	pub hlen: size_t,
+	pub hlen: usize,
 	pub pad: [c_uchar; 256usize],
 	pub key_type: c_uchar,
 	pub key_data: [c_uchar; 1536usize],
-}
-
-impl Clone for br_skey_decoder_context
-{
-	#[inline(always)]
-	fn clone(&self) -> Self
-	{
-		*self
-	}
-}
-
-impl Default for br_skey_decoder_context
-{
-	#[inline(always)]
-	fn default() -> Self
-	{
-		unsafe { zeroed() }
-	}
 }

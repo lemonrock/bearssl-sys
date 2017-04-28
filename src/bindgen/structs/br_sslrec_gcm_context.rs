@@ -3,22 +3,12 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct br_sslrec_gcm_context
 {
-	pub vtable: br_sslrec_gcm_context_AnonymousUnion_vtable,
-	pub seq: uint64_t,
-	pub bc: br_sslrec_gcm_context_AnonymousUnion_bc,
+	pub vtable: br_sslrec_gcm_context__bindgen_ty_1,
+	pub seq: u64,
+	pub bc: br_sslrec_gcm_context__bindgen_ty_2,
 	pub gh: br_ghash,
 	pub iv: [c_uchar; 4usize],
 	pub h: [c_uchar; 16usize],
-}
-
-impl Default for br_sslrec_gcm_context
-{
-	#[inline(always)]
-	fn default() -> Self
-	{
-		unsafe { zeroed() }
-	}
 }

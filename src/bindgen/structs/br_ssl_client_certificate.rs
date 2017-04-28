@@ -3,13 +3,22 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_ssl_client_certificate
 {
 	pub auth_type: c_int,
 	pub hash_id: c_int,
 	pub chain: *const br_x509_certificate,
-	pub chain_len: size_t,
+	pub chain_len: usize,
+}
+
+impl Clone for br_ssl_client_certificate
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_ssl_client_certificate

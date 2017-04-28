@@ -5,7 +5,7 @@
 extern "C"
 {
 	pub fn br_multihash_init(ctx: *mut br_multihash_context);
-	pub fn br_multihash_out(ctx: *const br_multihash_context, id: c_int, dst: *mut c_void) -> size_t;
-	pub fn br_multihash_update(ctx: *mut br_multihash_context, data: *const c_void, len: size_t);
+	pub fn br_multihash_out(ctx: *const br_multihash_context, id: c_int, dst: *mut c_void) -> usize;
+	pub fn br_multihash_update(ctx: *mut br_multihash_context, data: *const c_void, len: usize);
 	pub fn br_multihash_zero(ctx: *mut br_multihash_context);
 }

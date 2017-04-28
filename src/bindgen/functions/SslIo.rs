@@ -6,9 +6,9 @@ extern "C"
 {
 	pub fn br_sslio_close(cc: *mut br_sslio_context) -> c_int;
 	pub fn br_sslio_flush(cc: *mut br_sslio_context) -> c_int;
-	pub fn br_sslio_init(ctx: *mut br_sslio_context, engine: *mut br_ssl_engine_context, low_read: Option<unsafe extern "C" fn(read_context: *mut c_void, data: *mut c_uchar, len: size_t) -> c_int>, read_context: *mut c_void, low_write: Option<unsafe extern "C" fn(write_context: *mut c_void, data: *const c_uchar, len: size_t) -> c_int>, write_context: *mut c_void);
-	pub fn br_sslio_read(cc: *mut br_sslio_context, dst: *mut c_void, len: size_t) -> c_int;
-	pub fn br_sslio_read_all(cc: *mut br_sslio_context, dst: *mut c_void, len: size_t) -> c_int;
-	pub fn br_sslio_write(cc: *mut br_sslio_context, src: *const c_void, len: size_t) -> c_int;
-	pub fn br_sslio_write_all(cc: *mut br_sslio_context, src: *const c_void, len: size_t) -> c_int;
+	pub fn br_sslio_init(ctx: *mut br_sslio_context, engine: *mut br_ssl_engine_context, low_read: Option<unsafe extern "C" fn(read_context: *mut c_void, data: *mut c_uchar, len: usize) -> c_int>, read_context: *mut c_void, low_write: Option<unsafe extern "C" fn(write_context: *mut c_void, data: *const c_uchar, len: usize) -> c_int>, write_context: *mut c_void);
+	pub fn br_sslio_read(cc: *mut br_sslio_context, dst: *mut c_void, len: usize) -> c_int;
+	pub fn br_sslio_read_all(cc: *mut br_sslio_context, dst: *mut c_void, len: usize) -> c_int;
+	pub fn br_sslio_write(cc: *mut br_sslio_context, src: *const c_void, len: usize) -> c_int;
+	pub fn br_sslio_write_all(cc: *mut br_sslio_context, src: *const c_void, len: usize) -> c_int;
 }

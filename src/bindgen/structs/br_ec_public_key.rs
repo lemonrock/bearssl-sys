@@ -3,12 +3,21 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_ec_public_key
 {
 	pub curve: c_int,
 	pub q: *mut c_uchar,
-	pub qlen: size_t,
+	pub qlen: usize,
+}
+
+impl Clone for br_ec_public_key
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_ec_public_key

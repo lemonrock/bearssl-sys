@@ -3,14 +3,23 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_sslio_context
 {
 	pub engine: *mut br_ssl_engine_context,
-	pub low_read: Option<unsafe extern "C" fn(read_context: *mut c_void, data: *mut c_uchar, len: size_t) -> c_int>,
+	pub low_read: Option<unsafe extern "C" fn(read_context: *mut c_void, data: *mut c_uchar, len: usize) -> c_int>,
 	pub read_context: *mut c_void,
-	pub low_write: Option<unsafe extern "C" fn(write_context: *mut c_void, data: *const c_uchar, len: size_t) -> c_int>,
+	pub low_write: Option<unsafe extern "C" fn(write_context: *mut c_void, data: *const c_uchar, len: usize) -> c_int>,
 	pub write_context: *mut c_void,
+}
+
+impl Clone for br_sslio_context
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_sslio_context

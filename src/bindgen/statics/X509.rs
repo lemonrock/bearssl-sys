@@ -4,5 +4,6 @@
 
 extern "C"
 {
-	pub static br_x509_knownkey_vtable: br_x509_class;
+	#[link_name = "br_x509_knownkey_vtable"] pub static br_x509_knownkey_vtable: br_x509_class;
+	#[link_name = "br_x509_minimal_vtable"] pub static br_x509_minimal_vtable: br_x509_class;
 }

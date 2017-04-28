@@ -4,14 +4,14 @@
 
 extern "C"
 {
-	pub static br_ec_all_m15: br_ec_impl;
-	pub static br_ec_all_m31: br_ec_impl;
-	pub static br_ec_c25519_i15: br_ec_impl;
-	pub static br_ec_c25519_i31: br_ec_impl;
-	pub static br_ec_c25519_m15: br_ec_impl;
-	pub static br_ec_c25519_m31: br_ec_impl;
-	pub static br_ec_p256_m15: br_ec_impl;
-	pub static br_ec_p256_m31: br_ec_impl;
-	pub static br_ec_prime_i15: br_ec_impl;
-	pub static br_ec_prime_i31: br_ec_impl;
+	#[link_name = "br_ec_all_m15"] pub static br_ec_all_m15: br_ec_impl;
+	#[link_name = "br_ec_all_m31"] pub static br_ec_all_m31: br_ec_impl;
+	#[link_name = "br_ec_c25519_i15"] pub static br_ec_c25519_i15: br_ec_impl;
+	#[link_name = "br_ec_c25519_i31"] pub static br_ec_c25519_i31: br_ec_impl;
+	#[link_name = "br_ec_c25519_m15"] pub static br_ec_c25519_m15: br_ec_impl;
+	#[link_name = "br_ec_c25519_m31"] pub static br_ec_c25519_m31: br_ec_impl;
+	#[link_name = "br_ec_p256_m15"] pub static br_ec_p256_m15: br_ec_impl;
+	#[link_name = "br_ec_p256_m31"] pub static br_ec_p256_m31: br_ec_impl;
+	#[link_name = "br_ec_prime_i15"] pub static br_ec_prime_i15: br_ec_impl;
+	#[link_name = "br_ec_prime_i31"] pub static br_ec_prime_i31: br_ec_impl;
 }

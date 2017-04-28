@@ -3,22 +3,11 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
-#[allow(missing_debug_implementations)]
 pub struct br_aes_ct_ctr_keys
 {
 	pub vtable: *const br_block_ctr_class,
-	pub skey: [uint32_t; 60usize],
+	pub skey: [u32; 60usize],
 	pub num_rounds: c_uint,
-}
-
-impl Clone for br_aes_ct_ctr_keys
-{
-	#[inline(always)]
-	fn clone(&self) -> Self
-	{
-		*self
-	}
 }
 
 impl Default for br_aes_ct_ctr_keys

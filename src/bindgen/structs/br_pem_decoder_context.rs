@@ -3,38 +3,18 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
-#[allow(missing_debug_implementations)]
 pub struct br_pem_decoder_context
 {
-	pub cpu: br_pem_decoder_context_AnonymousStruct_cpu,
-	pub dp_stack: [uint32_t; 32usize],
-	pub rp_stack: [uint32_t; 32usize],
+	pub cpu: br_pem_decoder_context__bindgen_ty_1,
+	pub dp_stack: [u32; 32usize],
+	pub rp_stack: [u32; 32usize],
 	pub err: c_int,
 	pub hbuf: *const c_uchar,
-	pub hlen: size_t,
-	pub dest: Option<unsafe extern "C" fn(dest_ctx: *mut c_void, src: *const c_void, len: size_t)>,
+	pub hlen: usize,
+	pub dest: Option<unsafe extern "C" fn(dest_ctx: *mut c_void, src: *const c_void, len: usize)>,
 	pub dest_ctx: *mut c_void,
 	pub event: c_uchar,
 	pub name: [c_char; 128usize],
 	pub buf: [c_uchar; 255usize],
-	pub ptr: size_t,
-}
-
-impl Clone for br_pem_decoder_context
-{
-	#[inline(always)]
-	fn clone(&self) -> Self
-	{
-		*self
-	}
-}
-
-impl Default for br_pem_decoder_context
-{
-	#[inline(always)]
-	fn default() -> Self
-	{
-		unsafe { zeroed() }
-	}
+	pub ptr: usize,
 }

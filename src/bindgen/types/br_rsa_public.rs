@@ -2,4 +2,4 @@
 // Copyright © 2016 The developers of bearssl-sys. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/lemonrock/bearssl-sys/master/COPYRIGHT.
 
 
-pub type br_rsa_public = Option<unsafe extern "C" fn(x: *mut c_uchar, xlen: size_t, pk: *const br_rsa_public_key) -> uint32_t>;
+pub type br_rsa_public = Option<unsafe extern "C" fn(x: *mut c_uchar, xlen: usize, pk: *const br_rsa_public_key) -> u32>;

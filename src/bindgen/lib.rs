@@ -3,22 +3,16 @@
 
 
 
-use ::core::clone::Clone;
-use ::core::default::Default;
+extern crate libc;
+
+
 use ::core::mem::zeroed;
 use ::core::option::Option;
-
-extern crate libc;
 use ::libc::c_char;
 use ::libc::c_int;
 use ::libc::c_uchar;
 use ::libc::c_uint;
 use ::libc::c_void;
-use ::libc::int16_t;
-use ::libc::size_t;
-use ::libc::uint16_t;
-use ::libc::uint32_t;
-use ::libc::uint64_t;
 
 #[link(name = "bearssl", kind = "static-nobundle")]
 extern "C"
@@ -26,7 +20,8 @@ extern "C"
 }
 
 include!("bindgen/constants.rs");
-include!("bindgen/types.rs");
-include!("bindgen/structs.rs");
-include!("bindgen/statics.rs");
 include!("bindgen/functions.rs");
+include!("bindgen/statics.rs");
+include!("bindgen/structs.rs");
+include!("bindgen/types.rs");
+include!("bindgen/unions.rs");

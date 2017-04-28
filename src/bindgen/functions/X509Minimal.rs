@@ -4,6 +4,6 @@
 
 extern "C"
 {
-	pub fn br_x509_minimal_init(ctx: *mut br_x509_minimal_context, dn_hash_impl: *const br_hash_class, trust_anchors: *const br_x509_trust_anchor, trust_anchors_num: size_t);
-	pub fn br_x509_minimal_init_full(ctx: *mut br_x509_minimal_context, trust_anchors: *const br_x509_trust_anchor, trust_anchors_num: size_t);
+	pub fn br_x509_minimal_init(ctx: *mut br_x509_minimal_context, dn_hash_impl: *const br_hash_class, trust_anchors: *const br_x509_trust_anchor, trust_anchors_num: usize);
+	pub fn br_x509_minimal_init_full(ctx: *mut br_x509_minimal_context, trust_anchors: *const br_x509_trust_anchor, trust_anchors_num: usize);
 }

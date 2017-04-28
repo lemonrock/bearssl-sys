@@ -3,19 +3,28 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_ssl_session_cache_lru
 {
 	pub vtable: *const br_ssl_session_cache_class,
 	pub store: *mut c_uchar,
-	pub store_len: size_t,
-	pub store_ptr: size_t,
+	pub store_len: usize,
+	pub store_ptr: usize,
 	pub index_key: [c_uchar; 32usize],
 	pub hash: *const br_hash_class,
 	pub init_done: c_int,
-	pub head: uint32_t,
-	pub tail: uint32_t,
-	pub root: uint32_t,
+	pub head: u32,
+	pub tail: u32,
+	pub root: u32,
+}
+
+impl Clone for br_ssl_session_cache_lru
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_ssl_session_cache_lru

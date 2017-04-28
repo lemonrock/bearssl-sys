@@ -3,24 +3,13 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
-#[allow(missing_debug_implementations)]
 pub struct br_ssl_session_parameters
 {
 	pub session_id: [c_uchar; 32usize],
 	pub session_id_len: c_uchar,
-	pub version: uint16_t,
-	pub cipher_suite: uint16_t,
+	pub version: u16,
+	pub cipher_suite: u16,
 	pub master_secret: [c_uchar; 48usize],
-}
-
-impl Clone for br_ssl_session_parameters
-{
-	#[inline(always)]
-	fn clone(&self) -> Self
-	{
-		*self
-	}
 }
 
 impl Default for br_ssl_session_parameters

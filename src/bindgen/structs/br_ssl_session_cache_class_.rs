@@ -3,12 +3,21 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_ssl_session_cache_class_
 {
-	pub context_size: size_t,
+	pub context_size: usize,
 	pub save: Option<unsafe extern "C" fn(ctx: *mut *const br_ssl_session_cache_class, server_ctx: *mut br_ssl_server_context, params: *const br_ssl_session_parameters)>,
 	pub load: Option<unsafe extern "C" fn(ctx: *mut *const br_ssl_session_cache_class, server_ctx: *mut br_ssl_server_context, params: *mut br_ssl_session_parameters) -> c_int>,
+}
+
+impl Clone for br_ssl_session_cache_class_
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_ssl_session_cache_class_

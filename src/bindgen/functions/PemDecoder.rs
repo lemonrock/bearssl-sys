@@ -6,5 +6,5 @@ extern "C"
 {
 	pub fn br_pem_decoder_event(ctx: *mut br_pem_decoder_context) -> c_int;
 	pub fn br_pem_decoder_init(ctx: *mut br_pem_decoder_context);
-	pub fn br_pem_decoder_push(ctx: *mut br_pem_decoder_context, data: *const c_void, len: size_t) -> size_t;
+	pub fn br_pem_decoder_push(ctx: *mut br_pem_decoder_context, data: *const c_void, len: usize) -> usize;
 }

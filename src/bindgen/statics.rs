@@ -11,4 +11,3 @@ include!("bindgen/statics/SslRecordIn.rs");
 include!("bindgen/statics/SslRecordOut.rs");
 include!("bindgen/statics/X509.rs");
 include!("bindgen/statics/hash.rs");
-include!("bindgen/statics/miscellany.rs");

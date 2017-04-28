@@ -6,7 +6,7 @@ extern "C"
 {
 	pub fn br_sha384_init(ctx: *mut br_sha384_context);
 	pub fn br_sha384_out(ctx: *const br_sha384_context, out: *mut c_void);
-	pub fn br_sha384_set_state(ctx: *mut br_sha384_context, stb: *const c_void, count: uint64_t);
-	pub fn br_sha384_state(ctx: *const br_sha384_context, out: *mut c_void) -> uint64_t;
-	pub fn br_sha384_update(ctx: *mut br_sha384_context, data: *const c_void, len: size_t);
+	pub fn br_sha384_set_state(ctx: *mut br_sha384_context, stb: *const c_void, count: u64);
+	pub fn br_sha384_state(ctx: *const br_sha384_context, out: *mut c_void) -> u64;
+	pub fn br_sha384_update(ctx: *mut br_sha384_context, data: *const c_void, len: usize);
 }

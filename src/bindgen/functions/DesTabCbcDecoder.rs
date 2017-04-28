@@ -4,8 +4,8 @@
 
 extern "C"
 {
-	pub fn br_des_tab_cbcdec_init(ctx: *mut br_des_tab_cbcdec_keys, key: *const c_void, len: size_t);
-	pub fn br_des_tab_cbcdec_run(ctx: *const br_des_tab_cbcdec_keys, iv: *mut c_void, data: *mut c_void, len: size_t);
-	pub fn br_des_tab_cbcenc_init(ctx: *mut br_des_tab_cbcenc_keys, key: *const c_void, len: size_t);
-	pub fn br_des_tab_cbcenc_run(ctx: *const br_des_tab_cbcenc_keys, iv: *mut c_void, data: *mut c_void, len: size_t);
+	pub fn br_des_tab_cbcdec_init(ctx: *mut br_des_tab_cbcdec_keys, key: *const c_void, len: usize);
+	pub fn br_des_tab_cbcdec_run(ctx: *const br_des_tab_cbcdec_keys, iv: *mut c_void, data: *mut c_void, len: usize);
+	pub fn br_des_tab_cbcenc_init(ctx: *mut br_des_tab_cbcenc_keys, key: *const c_void, len: usize);
+	pub fn br_des_tab_cbcenc_run(ctx: *const br_des_tab_cbcenc_keys, iv: *mut c_void, data: *mut c_void, len: usize);
 }

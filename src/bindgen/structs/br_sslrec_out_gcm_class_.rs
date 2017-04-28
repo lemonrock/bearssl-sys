@@ -3,11 +3,20 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_sslrec_out_gcm_class_
 {
 	pub inner: br_sslrec_out_class,
-	pub init: Option<unsafe extern "C" fn(ctx: *mut *const br_sslrec_out_gcm_class, bc_impl: *const br_block_ctr_class, key: *const c_void, key_len: size_t, gh_impl: br_ghash, iv: *const c_void)>,
+	pub init: Option<unsafe extern "C" fn(ctx: *mut *const br_sslrec_out_gcm_class, bc_impl: *const br_block_ctr_class, key: *const c_void, key_len: usize, gh_impl: br_ghash, iv: *const c_void)>,
+}
+
+impl Clone for br_sslrec_out_gcm_class_
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_sslrec_out_gcm_class_

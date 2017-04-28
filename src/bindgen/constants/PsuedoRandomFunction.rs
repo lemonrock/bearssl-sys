@@ -2,5 +2,5 @@
 // Copyright © 2016 The developers of bearssl-sys. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/lemonrock/bearssl-sys/master/COPYRIGHT.
 
 
-pub const BR_SSLPRF_SHA256: c_int = 4;
-pub const BR_SSLPRF_SHA384: c_int = 5;
+pub const BR_SSLPRF_SHA256: c_uint = 4;
+pub const BR_SSLPRF_SHA384: c_uint = 5;

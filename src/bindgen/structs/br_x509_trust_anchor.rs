@@ -3,12 +3,21 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Copy)]
 pub struct br_x509_trust_anchor
 {
 	pub dn: br_x500_name,
 	pub flags: c_uint,
 	pub pkey: br_x509_pkey,
+}
+
+impl Clone for br_x509_trust_anchor
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_x509_trust_anchor

@@ -2,7 +2,7 @@
 // Copyright © 2016 The developers of bearssl-sys. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/lemonrock/bearssl-sys/master/COPYRIGHT.
 
 
-pub const BR_KEYTYPE_EC: c_int = 2;
-pub const BR_KEYTYPE_KEYX: c_int = 16;
-pub const BR_KEYTYPE_RSA: c_int = 1;
-pub const BR_KEYTYPE_SIGN: c_int = 32;
+pub const BR_KEYTYPE_EC: c_uint = 2;
+pub const BR_KEYTYPE_KEYX: c_uint = 16;
+pub const BR_KEYTYPE_RSA: c_uint = 1;
+pub const BR_KEYTYPE_SIGN: c_uint = 32;

@@ -3,46 +3,26 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
-#[allow(missing_debug_implementations)]
 pub struct br_x509_decoder_context
 {
 	pub pkey: br_x509_pkey,
-	pub cpu: br_x509_decoder_context_AnonymousStruct_cpu,
-	pub dp_stack: [uint32_t; 32usize],
-	pub rp_stack: [uint32_t; 32usize],
+	pub cpu: br_x509_decoder_context__bindgen_ty_1,
+	pub dp_stack: [u32; 32usize],
+	pub rp_stack: [u32; 32usize],
 	pub err: c_int,
 	pub pad: [c_uchar; 256usize],
 	pub decoded: c_uchar,
-	pub notbefore_days: uint32_t,
-	pub notbefore_seconds: uint32_t,
-	pub notafter_days: uint32_t,
-	pub notafter_seconds: uint32_t,
+	pub notbefore_days: u32,
+	pub notbefore_seconds: u32,
+	pub notafter_days: u32,
+	pub notafter_seconds: u32,
 	pub isCA: c_uchar,
 	pub copy_dn: c_uchar,
 	pub append_dn_ctx: *mut c_void,
-	pub append_dn: Option<unsafe extern "C" fn(ctx: *mut c_void, buf: *const c_void, len: size_t)>,
+	pub append_dn: Option<unsafe extern "C" fn(ctx: *mut c_void, buf: *const c_void, len: usize)>,
 	pub hbuf: *const c_uchar,
-	pub hlen: size_t,
+	pub hlen: usize,
 	pub pkey_data: [c_uchar; 520usize],
 	pub signer_key_type: c_uchar,
 	pub signer_hash_id: c_uchar,
-}
-
-impl Clone for br_x509_decoder_context
-{
-	#[inline(always)]
-	fn clone(&self) -> Self
-	{
-		*self
-	}
-}
-
-impl Default for br_x509_decoder_context
-{
-	#[inline(always)]
-	fn default() -> Self
-	{
-		unsafe { zeroed() }
-	}
 }

@@ -3,22 +3,11 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
-#[allow(missing_debug_implementations)]
 pub struct br_des_ct_cbcenc_keys
 {
 	pub vtable: *const br_block_cbcenc_class,
-	pub skey: [uint32_t; 96usize],
+	pub skey: [u32; 96usize],
 	pub num_rounds: c_uint,
-}
-
-impl Clone for br_des_ct_cbcenc_keys
-{
-	#[inline(always)]
-	fn clone(&self) -> Self
-	{
-		*self
-	}
 }
 
 impl Default for br_des_ct_cbcenc_keys

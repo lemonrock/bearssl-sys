@@ -3,11 +3,20 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_sslrec_out_chapol_class_
 {
 	pub inner: br_sslrec_out_class,
 	pub init: Option<unsafe extern "C" fn(ctx: *mut *const br_sslrec_out_chapol_class, ichacha: br_chacha20_run, ipoly: br_poly1305_run, key: *const c_void, iv: *const c_void)>,
+}
+
+impl Clone for br_sslrec_out_chapol_class_
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_sslrec_out_chapol_class_

@@ -2,6 +2,6 @@
 // Copyright © 2016 The developers of bearssl-sys. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/lemonrock/bearssl-sys/master/COPYRIGHT.
 
 
-pub const BR_PEM_BEGIN_OBJ: c_int = 1;
-pub const BR_PEM_END_OBJ: c_int = 2;
-pub const BR_PEM_ERROR: c_int = 3;
+pub const BR_PEM_BEGIN_OBJ: c_uint = 1;
+pub const BR_PEM_END_OBJ: c_uint = 2;
+pub const BR_PEM_ERROR: c_uint = 3;

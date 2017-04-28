@@ -4,7 +4,7 @@
 
 extern "C"
 {
-	pub static br_sslrec_in_cbc_vtable: br_sslrec_in_cbc_class;
-	pub static br_sslrec_in_chapol_vtable: br_sslrec_in_chapol_class;
-	pub static br_sslrec_in_gcm_vtable: br_sslrec_in_gcm_class;
+	#[link_name = "br_sslrec_in_cbc_vtable"] pub static br_sslrec_in_cbc_vtable: br_sslrec_in_cbc_class;
+	#[link_name = "br_sslrec_in_chapol_vtable"] pub static br_sslrec_in_chapol_vtable: br_sslrec_in_chapol_class;
+	#[link_name = "br_sslrec_in_gcm_vtable"] pub static br_sslrec_in_gcm_vtable: br_sslrec_in_gcm_class;
 }

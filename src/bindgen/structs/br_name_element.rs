@@ -3,13 +3,22 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_name_element
 {
 	pub oid: *const c_uchar,
 	pub buf: *mut c_char,
-	pub len: size_t,
+	pub len: usize,
 	pub status: c_int,
+}
+
+impl Clone for br_name_element
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_name_element

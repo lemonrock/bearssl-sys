@@ -2,7 +2,7 @@
 // Copyright © 2016 The developers of bearssl-sys. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/lemonrock/bearssl-sys/master/COPYRIGHT.
 
 
-pub const BR_SSL_BUFSIZE_BIDI: c_int = 33178;
-pub const BR_SSL_BUFSIZE_INPUT: c_int = 16709;
-pub const BR_SSL_BUFSIZE_MONO: c_int = 16709;
-pub const BR_SSL_BUFSIZE_OUTPUT: c_int = 16469;
+pub const BR_SSL_BUFSIZE_BIDI: c_uint = 33178;
+pub const BR_SSL_BUFSIZE_INPUT: c_uint = 16709;
+pub const BR_SSL_BUFSIZE_MONO: c_uint = 16709;
+pub const BR_SSL_BUFSIZE_OUTPUT: c_uint = 16469;

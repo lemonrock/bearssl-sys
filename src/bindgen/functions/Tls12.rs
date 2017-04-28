@@ -4,6 +4,6 @@
 
 extern "C"
 {
-	pub fn br_tls12_sha256_prf(dst: *mut c_void, len: size_t, secret: *const c_void, secret_len: size_t, label: *const c_char, seed: *const c_void, seed_len: size_t);
-	pub fn br_tls12_sha384_prf(dst: *mut c_void, len: size_t, secret: *const c_void, secret_len: size_t, label: *const c_char, seed: *const c_void, seed_len: size_t);
+	pub fn br_tls12_sha256_prf(dst: *mut c_void, len: usize, secret: *const c_void, secret_len: usize, label: *const c_char, seed: *const c_void, seed_len: usize);
+	pub fn br_tls12_sha384_prf(dst: *mut c_void, len: usize, secret: *const c_void, secret_len: usize, label: *const c_char, seed: *const c_void, seed_len: usize);
 }

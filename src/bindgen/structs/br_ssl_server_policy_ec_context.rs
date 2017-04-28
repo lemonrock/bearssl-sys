@@ -3,18 +3,27 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_ssl_server_policy_ec_context
 {
 	pub vtable: *const br_ssl_server_policy_class,
 	pub chain: *const br_x509_certificate,
-	pub chain_len: size_t,
+	pub chain_len: usize,
 	pub sk: *const br_ec_private_key,
 	pub allowed_usages: c_uint,
 	pub cert_issuer_key_type: c_uint,
 	pub mhash: *const br_multihash_context,
 	pub iec: *const br_ec_impl,
 	pub iecdsa: br_ecdsa_sign,
+}
+
+impl Clone for br_ssl_server_policy_ec_context
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_ssl_server_policy_ec_context

@@ -3,12 +3,21 @@
 
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Copy)]
 pub struct br_sslrec_in_class_
 {
-	pub context_size: size_t,
-	pub check_length: Option<unsafe extern "C" fn(ctx: *const *const br_sslrec_in_class, record_len: size_t) -> c_int>,
-	pub decrypt: Option<unsafe extern "C" fn(ctx: *mut *const br_sslrec_in_class, record_type: c_int, version: c_uint, payload: *mut c_void, len: *mut size_t) -> *mut c_uchar>,
+	pub context_size: usize,
+	pub check_length: Option<unsafe extern "C" fn(ctx: *const *const br_sslrec_in_class, record_len: usize) -> c_int>,
+	pub decrypt: Option<unsafe extern "C" fn(ctx: *mut *const br_sslrec_in_class, record_type: c_int, version: c_uint, payload: *mut c_void, len: *mut usize) -> *mut c_uchar>,
+}
+
+impl Clone for br_sslrec_in_class_
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
 }
 
 impl Default for br_sslrec_in_class_
