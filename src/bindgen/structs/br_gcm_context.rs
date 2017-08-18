@@ -3,21 +3,34 @@
 
 
 #[repr(C)]
-pub union br_aes_x86ni_ctr_keys__bindgen_ty_1
+#[derive(Debug, Copy)]
+pub struct br_gcm_context
 {
-    pub skni: [c_uchar; 240usize],
+	pub vtable: *const br_aead_class,
+	pub bctx: *mut *const br_block_ctr_class,
+	pub gh: br_ghash,
+	pub h: [c_uchar; 16usize],
+	pub j0_1: [c_uchar; 12usize],
+	pub buf: [c_uchar; 16usize],
+	pub y: [c_uchar; 16usize],
+	pub j0_2: u32,
+	pub jc: u32,
+	pub count_aad: u64,
+	pub count_ctr: u64,
 }
 
-impl Default for br_aes_x86ni_ctr_keys__bindgen_ty_1
+impl Clone for br_gcm_context
 {
-	fn default() -> Self
+	#[inline(always)]
+	fn clone(&self) -> Self
 	{
-		unsafe { zeroed() }
+		*self
 	}
 }
 
-impl Default for br_aes_x86ni_ctr_keys
+impl Default for br_gcm_context
 {
+	#[inline(always)]
 	fn default() -> Self
 	{
 		unsafe { zeroed() }

@@ -3,21 +3,27 @@
 
 
 #[repr(C)]
-pub union br_aes_pwr8_cbcenc_keys__bindgen_ty_1
+#[derive(Debug, Default, Copy)]
+pub struct br_ssl_server_context___bindgen_ty_1
 {
-    pub skni: [c_uchar; 240usize],
+	pub vtable: __BindgenUnionField<*const br_ssl_server_policy_class>,
+	pub single_rsa: __BindgenUnionField<br_ssl_server_policy_rsa_context>,
+	pub single_ec: __BindgenUnionField<br_ssl_server_policy_ec_context>,
+	pub bindgen_union_field: [u64; 8usize],
 }
 
-impl Default for br_aes_pwr8_cbcenc_keys__bindgen_ty_1
+impl Clone for br_ssl_server_context___bindgen_ty_1
 {
-	fn default() -> Self
+	#[inline(always)]
+	fn clone(&self) -> Self
 	{
-		unsafe { zeroed() }
+		*self
 	}
 }
 
-impl Default for br_aes_pwr8_cbcenc_keys
+impl Default for br_ssl_server_context_
 {
+	#[inline(always)]
 	fn default() -> Self
 	{
 		unsafe { zeroed() }

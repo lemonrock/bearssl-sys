@@ -3,32 +3,27 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
-pub union br_ssl_client_context___bindgen_ty_1
+#[derive(Debug, Default, Copy)]
+pub struct br_ssl_client_context___bindgen_ty_1
 {
-    pub vtable: *const br_ssl_client_certificate_class,
-    pub single_rsa: br_ssl_client_certificate_rsa_context,
-    pub single_ec: br_ssl_client_certificate_ec_context,
+	pub vtable: __BindgenUnionField<*const br_ssl_client_certificate_class>,
+	pub single_rsa: __BindgenUnionField<br_ssl_client_certificate_rsa_context>,
+	pub single_ec: __BindgenUnionField<br_ssl_client_certificate_ec_context>,
+	pub bindgen_union_field: [u64; 8usize],
 }
 
 impl Clone for br_ssl_client_context___bindgen_ty_1
 {
+	#[inline(always)]
 	fn clone(&self) -> Self
 	{
 		*self
 	}
 }
 
-impl Default for br_ssl_client_context___bindgen_ty_1
-{
-	fn default() -> Self
-	{
-		unsafe { zeroed() }
-	}
-}
-
 impl Default for br_ssl_client_context_
 {
+	#[inline(always)]
 	fn default() -> Self
 	{
 		unsafe { zeroed() }

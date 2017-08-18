@@ -3,24 +3,19 @@
 
 
 #[repr(C)]
-pub union br_sslrec_gcm_context__bindgen_ty_2
+#[derive(Debug, Default, Copy)]
+pub struct br_skey_decoder_context__bindgen_ty_1
 {
-    pub vtable: *const br_block_ctr_class,
-    pub aes: br_aes_gen_ctr_keys,
+	pub rsa: __BindgenUnionField<br_rsa_private_key>,
+	pub ec: __BindgenUnionField<br_ec_private_key>,
+	pub bindgen_union_field: [u64; 11usize],
 }
 
-impl Default for br_sslrec_gcm_context__bindgen_ty_2
+impl Clone for br_skey_decoder_context__bindgen_ty_1
 {
-	fn default() -> Self
+	#[inline(always)]
+	fn clone(&self) -> Self
 	{
-		unsafe { zeroed() }
-	}
-}
-
-impl Default for br_sslrec_gcm_context
-{
-	fn default() -> Self
-	{
-		unsafe { zeroed() }
+		*self
 	}
 }

@@ -6,6 +6,14 @@
 extern crate libc;
 
 
+use ::core::clone::Clone;
+use ::core::default::Default;
+use ::core::fmt::Debug;
+use ::core::fmt::Formatter;
+use ::core::fmt::Result;
+use ::core::marker::Copy;
+use ::core::marker::PhantomData;
+use ::core::mem::transmute;
 use ::core::mem::zeroed;
 use ::core::option::Option;
 use ::libc::c_char;
@@ -19,9 +27,8 @@ extern "C"
 {
 }
 
-include!("bindgen/constants.rs");
-include!("bindgen/functions.rs");
-include!("bindgen/statics.rs");
-include!("bindgen/structs.rs");
-include!("bindgen/types.rs");
-include!("bindgen/unions.rs");
+include!("constants.rs");
+include!("functions.rs");
+include!("statics.rs");
+include!("structs.rs");
+include!("types.rs");

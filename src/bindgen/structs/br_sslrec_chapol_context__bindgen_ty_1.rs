@@ -3,19 +3,36 @@
 
 
 #[repr(C)]
-pub union br_aes_gen_ctr_keys
+#[derive(Debug, Default, Copy)]
+pub struct br_sslrec_chapol_context__bindgen_ty_1
 {
-    pub vtable: *const br_block_ctr_class,
-    pub c_big: br_aes_big_ctr_keys,
-    pub c_small: br_aes_small_ctr_keys,
-    pub c_ct: br_aes_ct_ctr_keys,
-    pub c_ct64: br_aes_ct64_ctr_keys,
-    pub c_x86ni: br_aes_x86ni_ctr_keys,
-    pub c_pwr8: br_aes_pwr8_ctr_keys,
+	pub gen: __BindgenUnionField<*const c_void>,
+	pub in_: __BindgenUnionField<*const br_sslrec_in_chapol_class>,
+	pub out: __BindgenUnionField<*const br_sslrec_out_chapol_class>,
+	pub bindgen_union_field: u64,
 }
 
-impl Default for br_aes_gen_ctr_keys
+impl Clone for br_sslrec_chapol_context__bindgen_ty_1
 {
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
+}
+
+impl Clone for br_sslrec_chapol_context
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
+}
+
+impl Default for br_sslrec_chapol_context
+{
+	#[inline(always)]
 	fn default() -> Self
 	{
 		unsafe { zeroed() }

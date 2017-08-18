@@ -2,4 +2,21 @@
 // Copyright © 2016 The developers of bearssl-sys. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/lemonrock/bearssl-sys/master/COPYRIGHT.
 
 
-pub type br_tls_prf_impl = Option<unsafe extern "C" fn(dst: *mut c_void, len: usize, secret: *const c_void, secret_len: usize, label: *const c_char, seed_num: usize, seed: *const br_tls_prf_seed_chunk)>;
+#[repr(C)]
+#[derive(Debug, Default, Copy)]
+pub struct br_sslrec_gcm_context__bindgen_ty_1
+{
+	pub gen: __BindgenUnionField<*const c_void>,
+	pub in_: __BindgenUnionField<*const br_sslrec_in_gcm_class>,
+	pub out: __BindgenUnionField<*const br_sslrec_out_gcm_class>,
+	pub bindgen_union_field: u64,
+}
+
+impl Clone for br_sslrec_gcm_context__bindgen_ty_1
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
+}

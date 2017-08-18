@@ -823,8 +823,11 @@ typedef struct {
 	} out;
 
 	/*
-	 * The "application data" flag. It is set when application data
-	 * can be exchanged, cleared otherwise.
+	 * The "application data" flag. Value:
+	 *   0   handshake is in process, no application data acceptable
+	 *   1   application data can be sent and received
+	 *   2   closing, no application data can be sent, but some
+	 *       can still be received (and discarded)
 	 */
 	unsigned char application_data;
 
@@ -868,8 +871,8 @@ typedef struct {
 	/*
 	 * Secure renegotiation (RFC 5746): 'reneg' can be:
 	 *   0   first handshake (server support is not known)
-	 *   1   server does not support secure renegotiation
-	 *   2   server supports secure renegotiation
+	 *   1   peer does not support secure renegotiation
+	 *   2   peer supports secure renegotiation
 	 *
 	 * The saved_finished buffer contains the client and the
 	 * server "Finished" values from the last handshake, in
@@ -2060,8 +2063,9 @@ void br_ssl_engine_close(br_ssl_engine_context *cc);
  *
  * If the engine is failed or closed, or if the peer is known not to
  * support secure renegotiation (RFC 5746), or if renegotiations have
- * been disabled with the `BR_OPT_NO_RENEGOTIATION` flag, then this
- * function returns 0 and nothing else happens.
+ * been disabled with the `BR_OPT_NO_RENEGOTIATION` flag, or if there
+ * is buffered incoming application data, then this function returns 0
+ * and nothing else happens.
  *
  * Otherwise, this function returns 1, and a renegotiation attempt is
  * triggered (if a handshake is already ongoing at that point, then
@@ -2071,6 +2075,41 @@ void br_ssl_engine_close(br_ssl_engine_context *cc);
  * \return  1 on success, 0 on error.
  */
 int br_ssl_engine_renegotiate(br_ssl_engine_context *cc);
+
+/**
+ * \brief Export key material from a connected SSL engine (RFC 5705).
+ *
+ * This calls compute a secret key of arbitrary length from the master
+ * secret of a connected SSL engine. If the provided context is not
+ * currently in "application data" state (initial handshake is not
+ * finished, another handshake is ongoing, or the connection failed or
+ * was closed), then this function returns 0. Otherwise, a secret key of
+ * length `len` bytes is computed and written in the buffer pointed to
+ * by `dst`, and 1 is returned.
+ *
+ * The computed key follows the specification described in RFC 5705.
+ * That RFC includes two key computations, with and without a "context
+ * value". If `context` is `NULL`, then the variant without context is
+ * used; otherwise, the `context_len` bytes located at the address
+ * pointed to by `context` are used in the computation. Note that it
+ * is possible to have a "with context" key with a context length of
+ * zero bytes, by setting `context` to a non-`NULL` value but
+ * `context_len` to 0.
+ *
+ * When context bytes are used, the context length MUST NOT exceed
+ * 65535 bytes.
+ *
+ * \param cc            SSL engine context.
+ * \param dst           destination buffer for exported key.
+ * \param len           exported key length (in bytes).
+ * \param label         disambiguation label.
+ * \param context       context value (or `NULL`).
+ * \param context_len   context length (in bytes).
+ * \return  1 on success, 0 on error.
+ */
+int br_ssl_key_export(br_ssl_engine_context *cc,
+	void *dst, size_t len, const char *label,
+	const void *context, size_t context_len);
 
 /*
  * Pre-declaration for the SSL client context.
@@ -3180,6 +3219,19 @@ typedef struct {
  */
 void br_ssl_session_cache_lru_init(br_ssl_session_cache_lru *cc,
 	unsigned char *store, size_t store_len);
+
+/**
+ * \brief Forget an entry in an LRU session cache.
+ *
+ * The session cache context must have been initialised. The entry
+ * with the provided session ID (of exactly 32 bytes) is looked for
+ * in the cache; if located, it is disabled.
+ *
+ * \param cc   session cache context.
+ * \param id   session ID to forget.
+ */
+void br_ssl_session_cache_lru_forget(
+	br_ssl_session_cache_lru *cc, const unsigned char *id);
 
 /**
  * \brief Context structure for a SSL server.

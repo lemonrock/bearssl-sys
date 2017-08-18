@@ -3,19 +3,43 @@
 
 
 #[repr(C)]
-pub union br_aes_gen_cbcenc_keys
+#[derive(Copy)]
+pub struct br_aes_x86ni_ctr_keys__bindgen_ty_1
 {
-    pub vtable: *const br_block_cbcenc_class,
-    pub c_big: br_aes_big_cbcenc_keys,
-    pub c_small: br_aes_small_cbcenc_keys,
-    pub c_ct: br_aes_ct_cbcenc_keys,
-    pub c_ct64: br_aes_ct64_cbcenc_keys,
-    pub c_x86ni: br_aes_x86ni_cbcenc_keys,
-    pub c_pwr8: br_aes_pwr8_cbcenc_keys,
+	pub skni: __BindgenUnionField<[c_uchar; 240usize]>,
+	pub bindgen_union_field: [u8; 240usize],
 }
 
-impl Default for br_aes_gen_cbcenc_keys
+impl Clone for br_aes_x86ni_ctr_keys__bindgen_ty_1
 {
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
+}
+
+impl Default for br_aes_x86ni_ctr_keys__bindgen_ty_1
+{
+	#[inline(always)]
+	fn default() -> Self
+	{
+		unsafe { zeroed() }
+	}
+}
+
+impl Clone for br_aes_x86ni_ctr_keys
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
+}
+
+impl Default for br_aes_x86ni_ctr_keys
+{
+	#[inline(always)]
 	fn default() -> Self
 	{
 		unsafe { zeroed() }

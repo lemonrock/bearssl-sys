@@ -3,15 +3,29 @@
 
 
 #[repr(C)]
-pub union br_des_gen_cbcdec_keys
+#[derive(Copy)]
+pub struct br_ssl_engine_context__bindgen_ty_2
 {
-    pub vtable: *const br_block_cbcdec_class,
-    pub c_tab: br_des_tab_cbcdec_keys,
-    pub c_ct: br_des_ct_cbcdec_keys,
+	pub vtable: __BindgenUnionField<*const br_sslrec_out_class>,
+	pub clear: __BindgenUnionField<br_sslrec_out_clear_context>,
+	pub cbc: __BindgenUnionField<br_sslrec_out_cbc_context>,
+	pub gcm: __BindgenUnionField<br_sslrec_gcm_context>,
+	pub chapol: __BindgenUnionField<br_sslrec_chapol_context>,
+	pub bindgen_union_field: [u64; 73usize],
 }
 
-impl Default for br_des_gen_cbcdec_keys
+impl Clone for br_ssl_engine_context__bindgen_ty_2
 {
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
+}
+
+impl Default for br_ssl_engine_context__bindgen_ty_2
+{
+	#[inline(always)]
 	fn default() -> Self
 	{
 		unsafe { zeroed() }

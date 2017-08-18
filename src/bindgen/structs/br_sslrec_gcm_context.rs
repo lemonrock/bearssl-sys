@@ -3,6 +3,7 @@
 
 
 #[repr(C)]
+#[derive(Debug, Copy)]
 pub struct br_sslrec_gcm_context
 {
 	pub vtable: br_sslrec_gcm_context__bindgen_ty_1,

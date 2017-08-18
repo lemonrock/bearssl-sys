@@ -4,5 +4,5 @@
 
 extern "C"
 {
-	pub fn br_tls10_prf(dst: *mut c_void, len: usize, secret: *const c_void, secret_len: usize, label: *const c_char, seed: *const c_void, seed_len: usize);
+	pub fn br_tls10_prf(dst: *mut c_void, len: usize, secret: *const c_void, secret_len: usize, label: *const c_char, seed_num: usize, seed: *const br_tls_prf_seed_chunk);
 }

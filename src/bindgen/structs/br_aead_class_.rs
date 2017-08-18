@@ -4,14 +4,18 @@
 
 #[repr(C)]
 #[derive(Debug, Copy)]
-pub struct br_x509_knownkey_context
+pub struct br_aead_class_
 {
-	pub vtable: *const br_x509_class,
-	pub pkey: br_x509_pkey,
-	pub usages: c_uint,
+	pub tag_size: usize,
+	pub reset: Option<unsafe extern "C" fn(cc: *mut *const br_aead_class, iv: *const c_void, len: usize)>,
+	pub aad_inject: Option<unsafe extern "C" fn(cc: *mut *const br_aead_class, data: *const c_void, len: usize)>,
+	pub flip: Option<unsafe extern "C" fn(cc: *mut *const br_aead_class)>,
+	pub run: Option<unsafe extern "C" fn(cc: *mut *const br_aead_class, encrypt: c_int, data: *mut c_void, len: usize)>,
+	pub get_tag: Option<unsafe extern "C" fn(cc: *mut *const br_aead_class, tag: *mut c_void)>,
+	pub check_tag: Option<unsafe extern "C" fn(cc: *mut *const br_aead_class, tag: *const c_void) -> u32>,
 }
 
-impl Clone for br_x509_knownkey_context
+impl Clone for br_aead_class_
 {
 	#[inline(always)]
 	fn clone(&self) -> Self
@@ -20,7 +24,7 @@ impl Clone for br_x509_knownkey_context
 	}
 }
 
-impl Default for br_x509_knownkey_context
+impl Default for br_aead_class_
 {
 	#[inline(always)]
 	fn default() -> Self

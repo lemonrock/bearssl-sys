@@ -3,6 +3,7 @@
 
 
 #[repr(C)]
+#[derive(Copy)]
 pub struct br_aes_x86ni_cbcdec_keys
 {
 	pub vtable: *const br_block_cbcdec_class,

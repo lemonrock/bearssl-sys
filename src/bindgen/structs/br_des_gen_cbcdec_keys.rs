@@ -3,20 +3,27 @@
 
 
 #[repr(C)]
-pub union br_hash_compat_context
+#[derive(Copy)]
+pub struct br_des_gen_cbcdec_keys
 {
-    pub vtable: *const br_hash_class,
-    pub md5: br_md5_context,
-    pub sha1: br_sha1_context,
-    pub sha224: br_sha224_context,
-    pub sha256: br_sha256_context,
-    pub sha384: br_sha384_context,
-    pub sha512: br_sha512_context,
-    pub md5sha1: br_md5sha1_context,
+	pub vtable: __BindgenUnionField<*const br_block_cbcdec_class>,
+	pub c_tab: __BindgenUnionField<br_des_tab_cbcdec_keys>,
+	pub c_ct: __BindgenUnionField<br_des_ct_cbcdec_keys>,
+	pub bindgen_union_field: [u64; 50usize],
 }
 
-impl Default for br_hash_compat_context
+impl Clone for br_des_gen_cbcdec_keys
 {
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
+}
+
+impl Default for br_des_gen_cbcdec_keys
+{
+	#[inline(always)]
 	fn default() -> Self
 	{
 		unsafe { zeroed() }

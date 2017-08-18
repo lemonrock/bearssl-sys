@@ -3,6 +3,7 @@
 
 
 #[repr(C)]
+#[derive(Copy)]
 pub struct br_aes_x86ni_ctr_keys
 {
 	pub vtable: *const br_block_ctr_class,

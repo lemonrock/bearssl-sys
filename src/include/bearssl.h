@@ -42,6 +42,7 @@
  * | bearssl_rand.h  | Pseudorandom byte generators                      |
  * | bearssl_prf.h   | PRF implementations (for SSL/TLS)                 |
  * | bearssl_block.h | Symmetric encryption                              |
+ * | bearssl_aead.h  | AEAD algorithms (combined encryption + MAC)       |
  * | bearssl_rsa.h   | RSA encryption and signatures                     |
  * | bearssl_ec.h    | Elliptic curves support (including ECDSA)         |
  * | bearssl_ssl.h   | SSL/TLS engine interface                          |
@@ -127,6 +128,7 @@
 #include "bearssl_rand.h"
 #include "bearssl_prf.h"
 #include "bearssl_block.h"
+#include "bearssl_aead.h"
 #include "bearssl_rsa.h"
 #include "bearssl_ec.h"
 #include "bearssl_ssl.h"

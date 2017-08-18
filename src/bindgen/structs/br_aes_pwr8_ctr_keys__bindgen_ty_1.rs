@@ -4,38 +4,42 @@
 
 #[repr(C)]
 #[derive(Copy)]
-pub union br_x509_pkey__bindgen_ty_1
+pub struct br_aes_pwr8_ctr_keys__bindgen_ty_1
 {
-    pub rsa: br_rsa_public_key,
-    pub ec: br_ec_public_key,
+	pub skni: __BindgenUnionField<[c_uchar; 240usize]>,
+	pub bindgen_union_field: [u8; 240usize],
 }
 
-impl Clone for br_x509_pkey__bindgen_ty_1
+impl Clone for br_aes_pwr8_ctr_keys__bindgen_ty_1
 {
+	#[inline(always)]
 	fn clone(&self) -> Self
 	{
 		*self
 	}
 }
 
-impl Default for br_x509_pkey__bindgen_ty_1
+impl Default for br_aes_pwr8_ctr_keys__bindgen_ty_1
 {
+	#[inline(always)]
 	fn default() -> Self
 	{
 		unsafe { zeroed() }
 	}
 }
 
-impl Clone for br_x509_pkey
+impl Clone for br_aes_pwr8_ctr_keys
 {
+	#[inline(always)]
 	fn clone(&self) -> Self
 	{
 		*self
 	}
 }
 
-impl Default for br_x509_pkey
+impl Default for br_aes_pwr8_ctr_keys
 {
+	#[inline(always)]
 	fn default() -> Self
 	{
 		unsafe { zeroed() }

@@ -3,21 +3,28 @@
 
 
 #[repr(C)]
-pub union br_aes_gen_cbcdec_keys
+#[derive(Debug, Default, Copy)]
+pub struct br_x509_pkey__bindgen_ty_1
 {
-    pub vtable: *const br_block_cbcdec_class,
-    pub c_big: br_aes_big_cbcdec_keys,
-    pub c_small: br_aes_small_cbcdec_keys,
-    pub c_ct: br_aes_ct_cbcdec_keys,
-    pub c_ct64: br_aes_ct64_cbcdec_keys,
-    pub c_x86ni: br_aes_x86ni_cbcdec_keys,
-    pub c_pwr8: br_aes_pwr8_cbcdec_keys,
+	pub rsa: __BindgenUnionField<br_rsa_public_key>,
+	pub ec: __BindgenUnionField<br_ec_public_key>,
+	pub bindgen_union_field: [u64; 4usize],
 }
 
-impl Default for br_aes_gen_cbcdec_keys
+impl Clone for br_x509_pkey__bindgen_ty_1
 {
-	fn default() -> Self
+	#[inline(always)]
+	fn clone(&self) -> Self
 	{
-		unsafe { zeroed() }
+		*self
+	}
+}
+
+impl Clone for br_x509_pkey
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
 	}
 }

@@ -3,15 +3,35 @@
 
 
 #[repr(C)]
-pub union br_des_gen_cbcenc_keys
+#[derive(Debug, Default, Copy)]
+pub struct br_sslrec_gcm_context__bindgen_ty_2
 {
-    pub vtable: *const br_block_cbcenc_class,
-    pub tab: br_des_tab_cbcenc_keys,
-    pub ct: br_des_ct_cbcenc_keys,
+	pub vtable: __BindgenUnionField<*const br_block_ctr_class>,
+	pub aes: __BindgenUnionField<br_aes_gen_ctr_keys>,
+	pub bindgen_union_field: [u64; 32usize],
 }
 
-impl Default for br_des_gen_cbcenc_keys
+impl Clone for br_sslrec_gcm_context__bindgen_ty_2
 {
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
+}
+
+impl Clone for br_sslrec_gcm_context
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
+}
+
+impl Default for br_sslrec_gcm_context
+{
+	#[inline(always)]
 	fn default() -> Self
 	{
 		unsafe { zeroed() }

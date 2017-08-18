@@ -3,7 +3,7 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
+#[derive(Debug, Default, Copy)]
 pub struct br_x509_pkey
 {
 	pub key_type: c_uchar,

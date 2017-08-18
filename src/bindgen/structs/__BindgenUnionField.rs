@@ -3,42 +3,54 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
-pub union br_sslrec_chapol_context__bindgen_ty_1
-{
-    pub gen: *const c_void,
-    pub in_: *const br_sslrec_in_chapol_class,
-    pub out: *const br_sslrec_out_chapol_class,
-}
+pub struct __BindgenUnionField<T>(PhantomData<T>);
 
-impl Clone for br_sslrec_chapol_context__bindgen_ty_1
+impl<T> __BindgenUnionField<T>
 {
-	fn clone(&self) -> Self
+	#[inline(always)]
+	pub fn new() -> Self
 	{
-		*self
+		__BindgenUnionField(PhantomData)
+	}
+	#[inline(always)]
+	pub unsafe fn as_ref(&self) -> &T
+	{
+		transmute(self)
+	}
+	#[inline(always)]
+	pub unsafe fn as_mut(&mut self) -> &mut T
+	{
+		transmute(self)
 	}
 }
 
-impl Default for br_sslrec_chapol_context__bindgen_ty_1
+impl<T> Default for __BindgenUnionField<T>
 {
+	#[inline(always)]
 	fn default() -> Self
 	{
-		unsafe { zeroed() }
+		Self::new()
 	}
 }
 
-impl Clone for br_sslrec_chapol_context
+impl<T> Clone for __BindgenUnionField<T>
 {
+	#[inline(always)]
 	fn clone(&self) -> Self
 	{
-		*self
+		Self::new()
 	}
 }
 
-impl Default for br_sslrec_chapol_context
+impl<T> Copy for __BindgenUnionField<T>
 {
-	fn default() -> Self
+}
+
+impl<T> Debug for __BindgenUnionField<T>
+{
+	#[inline(always)]
+	fn fmt(&self, fmt: &mut Formatter) -> Result
 	{
-		unsafe { zeroed() }
+		fmt.write_str("__BindgenUnionField")
 	}
 }

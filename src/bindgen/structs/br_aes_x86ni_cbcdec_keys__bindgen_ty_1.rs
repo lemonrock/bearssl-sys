@@ -3,17 +3,43 @@
 
 
 #[repr(C)]
-pub union br_ssl_engine_context__bindgen_ty_2
+#[derive(Copy)]
+pub struct br_aes_x86ni_cbcdec_keys__bindgen_ty_1
 {
-    pub vtable: *const br_sslrec_out_class,
-    pub clear: br_sslrec_out_clear_context,
-    pub cbc: br_sslrec_out_cbc_context,
-    pub gcm: br_sslrec_gcm_context,
-    pub chapol: br_sslrec_chapol_context,
+	pub skni: __BindgenUnionField<[c_uchar; 240usize]>,
+	pub bindgen_union_field: [u8; 240usize],
 }
 
-impl Default for br_ssl_engine_context__bindgen_ty_2
+impl Clone for br_aes_x86ni_cbcdec_keys__bindgen_ty_1
 {
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
+}
+
+impl Default for br_aes_x86ni_cbcdec_keys__bindgen_ty_1
+{
+	#[inline(always)]
+	fn default() -> Self
+	{
+		unsafe { zeroed() }
+	}
+}
+
+impl Clone for br_aes_x86ni_cbcdec_keys
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
+}
+
+impl Default for br_aes_x86ni_cbcdec_keys
+{
+	#[inline(always)]
 	fn default() -> Self
 	{
 		unsafe { zeroed() }

@@ -3,6 +3,7 @@
 
 
 #[repr(C)]
+#[derive(Copy)]
 pub struct br_aes_pwr8_cbcenc_keys
 {
 	pub vtable: *const br_block_cbcenc_class,

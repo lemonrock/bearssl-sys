@@ -3,7 +3,7 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
+#[derive(Debug, Copy)]
 pub struct br_sslrec_chapol_context
 {
 	pub vtable: br_sslrec_chapol_context__bindgen_ty_1,

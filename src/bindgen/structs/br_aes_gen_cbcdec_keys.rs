@@ -3,34 +3,24 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
-pub union br_ssl_server_context___bindgen_ty_1
+#[derive(Debug, Default, Copy)]
+pub struct br_aes_gen_cbcdec_keys
 {
-    pub vtable: *const br_ssl_server_policy_class,
-    pub single_rsa: br_ssl_server_policy_rsa_context,
-    pub single_ec: br_ssl_server_policy_ec_context,
+	pub vtable: __BindgenUnionField<*const br_block_cbcdec_class>,
+	pub c_big: __BindgenUnionField<br_aes_big_cbcdec_keys>,
+	pub c_small: __BindgenUnionField<br_aes_small_cbcdec_keys>,
+	pub c_ct: __BindgenUnionField<br_aes_ct_cbcdec_keys>,
+	pub c_ct64: __BindgenUnionField<br_aes_ct64_cbcdec_keys>,
+	pub c_x86ni: __BindgenUnionField<br_aes_x86ni_cbcdec_keys>,
+	pub c_pwr8: __BindgenUnionField<br_aes_pwr8_cbcdec_keys>,
+	pub bindgen_union_field: [u64; 32usize],
 }
 
-impl Clone for br_ssl_server_context___bindgen_ty_1
+impl Clone for br_aes_gen_cbcdec_keys
 {
+	#[inline(always)]
 	fn clone(&self) -> Self
 	{
 		*self
-	}
-}
-
-impl Default for br_ssl_server_context___bindgen_ty_1
-{
-	fn default() -> Self
-	{
-		unsafe { zeroed() }
-	}
-}
-
-impl Default for br_ssl_server_context_
-{
-	fn default() -> Self
-	{
-		unsafe { zeroed() }
 	}
 }

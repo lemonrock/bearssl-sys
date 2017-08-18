@@ -5,4 +5,6 @@
 extern "C"
 {
 	pub fn br_chacha20_ct_run(key: *const c_void, iv: *const c_void, cc: u32, data: *mut c_void, len: usize) -> u32;
+	pub fn br_chacha20_sse2_get() -> br_chacha20_run;
+	pub fn br_chacha20_sse2_run(key: *const c_void, iv: *const c_void, cc: u32, data: *mut c_void, len: usize) -> u32;
 }

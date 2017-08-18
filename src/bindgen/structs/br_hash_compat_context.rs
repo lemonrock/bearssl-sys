@@ -3,25 +3,25 @@
 
 
 #[repr(C)]
-pub union br_sslrec_out_cbc_context__bindgen_ty_1
+#[derive(Debug, Default, Copy)]
+pub struct br_hash_compat_context
 {
-    pub vtable: *const br_block_cbcenc_class,
-    pub aes: br_aes_gen_cbcenc_keys,
-    pub des: br_des_gen_cbcenc_keys,
+	pub vtable: __BindgenUnionField<*const br_hash_class>,
+	pub md5: __BindgenUnionField<br_md5_context>,
+	pub sha1: __BindgenUnionField<br_sha1_context>,
+	pub sha224: __BindgenUnionField<br_sha224_context>,
+	pub sha256: __BindgenUnionField<br_sha256_context>,
+	pub sha384: __BindgenUnionField<br_sha384_context>,
+	pub sha512: __BindgenUnionField<br_sha512_context>,
+	pub md5sha1: __BindgenUnionField<br_md5sha1_context>,
+	pub bindgen_union_field: [u64; 26usize],
 }
 
-impl Default for br_sslrec_out_cbc_context__bindgen_ty_1
+impl Clone for br_hash_compat_context
 {
-	fn default() -> Self
+	#[inline(always)]
+	fn clone(&self) -> Self
 	{
-		unsafe { zeroed() }
-	}
-}
-
-impl Default for br_sslrec_out_cbc_context
-{
-	fn default() -> Self
-	{
-		unsafe { zeroed() }
+		*self
 	}
 }

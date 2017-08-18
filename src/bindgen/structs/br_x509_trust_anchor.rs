@@ -3,7 +3,7 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
+#[derive(Debug, Copy)]
 pub struct br_x509_trust_anchor
 {
 	pub dn: br_x500_name,

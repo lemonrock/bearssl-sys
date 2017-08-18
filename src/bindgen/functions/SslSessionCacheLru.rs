@@ -4,5 +4,6 @@
 
 extern "C"
 {
+	pub fn br_ssl_session_cache_lru_forget(cc: *mut br_ssl_session_cache_lru, id: *const c_uchar);
 	pub fn br_ssl_session_cache_lru_init(cc: *mut br_ssl_session_cache_lru, store: *mut c_uchar, store_len: usize);
 }

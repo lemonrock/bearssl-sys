@@ -7,8 +7,6 @@ rootIncludeFileName='bearssl.h'
 macosXHomebrewPackageNames=''
 alpineLinuxPackageNames='rsync make gcc linux-headers libunwind-dev linux-grsec-dev'
 clangAdditionalArguments=''
-headersFolderPath="$homeFolder"/compile-bearssl.conf.d/temporary/inc
-libFolderPath="$homeFolder"/compile-bearssl.conf.d/temporary/build
 link='bearssl'
 link_kind='static-nobundle'
 

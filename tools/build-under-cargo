@@ -140,7 +140,7 @@ build_under_cargo_reRunIfAnyChanged()
 
 build_under_cargo_determineBearsslRootFolderPath()
 {
-	bearsslRootFolderPath="$homeFolder"/compile-bearssl.conf.d/temporary
+	bearsslRootFolderPath="$homeFolder"/bindgen-wrapper.conf.d/temporary/root
 		
 	if [ ! -d "$bearsslRootFolderPath" ]; then
 		needsCompilation='true'
@@ -197,8 +197,8 @@ build_under_cargo_steps()
 	local needsCompilation='false'
 	build_under_cargo_determineBearsslRootFolderPath
 	
-	local bearsslLibFolderPath="$bearsslRootFolderPath"/build
-	local bearsslIncludeFolderPath="$bearsslRootFolderPath"/inc
+	local bearsslLibFolderPath="$bearsslRootFolderPath"/usr/lib
+	local bearsslIncludeFolderPath="$bearsslRootFolderPath"/usr/include
 	local srcFolderPath="$homeFolder"/src
 	local rustBindingsFolderPath="$srcFolderPath"/bindgen
 	local copyHeadersToKnownLocationForEmbeddedCCodeInRustIncludeFolderPath="$srcFolderPath"/include

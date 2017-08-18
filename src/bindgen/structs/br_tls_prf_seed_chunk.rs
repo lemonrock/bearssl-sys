@@ -3,24 +3,25 @@
 
 
 #[repr(C)]
-#[derive(Copy)]
-pub union br_sslrec_gcm_context__bindgen_ty_1
+#[derive(Debug, Copy)]
+pub struct br_tls_prf_seed_chunk
 {
-    pub gen: *const c_void,
-    pub in_: *const br_sslrec_in_gcm_class,
-    pub out: *const br_sslrec_out_gcm_class,
+	pub data: *const c_void,
+	pub len: usize,
 }
 
-impl Clone for br_sslrec_gcm_context__bindgen_ty_1
+impl Clone for br_tls_prf_seed_chunk
 {
+	#[inline(always)]
 	fn clone(&self) -> Self
 	{
 		*self
 	}
 }
 
-impl Default for br_sslrec_gcm_context__bindgen_ty_1
+impl Default for br_tls_prf_seed_chunk
 {
+	#[inline(always)]
 	fn default() -> Self
 	{
 		unsafe { zeroed() }

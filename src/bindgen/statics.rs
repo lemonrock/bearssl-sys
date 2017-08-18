@@ -2,12 +2,13 @@
 // Copyright © 2016 The developers of bearssl-sys. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/lemonrock/bearssl-sys/master/COPYRIGHT.
 
 
-include!("bindgen/statics/BlockCbcDecoder.rs");
-include!("bindgen/statics/BlockCbcEncoder.rs");
-include!("bindgen/statics/BlockCtr.rs");
-include!("bindgen/statics/EllipticCurve.rs");
-include!("bindgen/statics/PseudoRandomNumberGenerator.rs");
-include!("bindgen/statics/SslRecordIn.rs");
-include!("bindgen/statics/SslRecordOut.rs");
-include!("bindgen/statics/X509.rs");
-include!("bindgen/statics/hash.rs");
+include!("statics/BlockCbcDecoder.rs");
+include!("statics/BlockCbcEncoder.rs");
+include!("statics/BlockCtr.rs");
+include!("statics/EllipticCurve.rs");
+include!("statics/PseudoRandomNumberGenerator.rs");
+include!("statics/SslRecordIn.rs");
+include!("statics/SslRecordOut.rs");
+include!("statics/X509.rs");
+include!("statics/hash.rs");
+include!("statics/miscellany.rs");

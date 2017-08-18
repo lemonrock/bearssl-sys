@@ -4,9 +4,44 @@
 
 #[repr(C)]
 #[derive(Copy)]
-pub struct br_aes_x86ni_cbcenc_keys
+pub struct br_aes_pwr8_cbcdec_keys__bindgen_ty_1
 {
-	pub vtable: *const br_block_cbcenc_class,
-	pub skey: br_aes_x86ni_cbcenc_keys__bindgen_ty_1,
-	pub num_rounds: c_uint,
+	pub skni: __BindgenUnionField<[c_uchar; 240usize]>,
+	pub bindgen_union_field: [u8; 240usize],
+}
+
+impl Clone for br_aes_pwr8_cbcdec_keys__bindgen_ty_1
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
+}
+
+impl Default for br_aes_pwr8_cbcdec_keys__bindgen_ty_1
+{
+	#[inline(always)]
+	fn default() -> Self
+	{
+		unsafe { zeroed() }
+	}
+}
+
+impl Clone for br_aes_pwr8_cbcdec_keys
+{
+	#[inline(always)]
+	fn clone(&self) -> Self
+	{
+		*self
+	}
+}
+
+impl Default for br_aes_pwr8_cbcdec_keys
+{
+	#[inline(always)]
+	fn default() -> Self
+	{
+		unsafe { zeroed() }
+	}
 }

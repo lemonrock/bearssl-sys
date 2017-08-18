@@ -161,7 +161,7 @@ compile_bearssl_findFolderPaths()
 		homeFolderPath="$(pwd)"
 	cd - 1>/dev/null 2>/dev/null
 
-	configurationFolderPath="$homeFolderPath"/compile-bearssl.conf.d
+	configurationFolderPath="$homeFolderPath"/bindgen-wrapper.conf.d
 }
 
 compile_bearssl_platformSpecificPreparation()
@@ -232,6 +232,12 @@ compile_bearssl_make()
 	cd "$temporaryFolderPath" 1>/dev/null 2>/dev/null
 		make CONF=CrossCompileOnMacOsXConfiguration 1>&2
 	cd - 1>/dev/null 2>/dev/null
+	
+	mkdir -m 0700 -p "$temporaryFolderPath"/root/usr/include
+	rsync --archive --quiet "$temporaryFolderPath"/inc/ "$temporaryFolderPath"/root/usr/include/
+	
+	mkdir -m 0700 -p "$temporaryFolderPath"/root/usr/lib
+	cp "$temporaryFolderPath"/build/libbearssl.a "$temporaryFolderPath"/root/usr/lib
 }
 
 compile_bearssl_main()
